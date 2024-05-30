@@ -1,7 +1,29 @@
 .logo-petro-navbar {
-    height: 50px;
+    height: 40px;
 }
 
-/* .branco {
+.branco {
     fill: white;
-} */
+    color: white;
+}
+
+.logo-nome-navbar {
+    height: 20px;
+    margin: 0 10px;
+}
+
+.nav-link {
+    font-size:x-large !important;
+}
+
+.div-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-div {
+    background-color: grey;
+    width: 480px;
+    height: 800px;
+}
