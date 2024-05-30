@@ -1,7 +1,50 @@
+.gradient-background {
+    background: linear-gradient(300deg, #FDC82F, #008542);
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+
+
 .logo-petro-navbar {
-    height: 50px;
+    height: 40px;
 }
 
-/* .branco {
+.branco {
     fill: white;
-} */
+    color: white;
+}
+
+.logo-nome-navbar {
+    height: 20px;
+    margin: 0 10px;
+}
+
+.nav-link {
+    font-size:x-large !important;
+}
+
+.div-container {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    height: 100vh;
+}
+
+.main-div {
+    background-color: white;
+    width: 480px;
+    height: 640px;
+}
