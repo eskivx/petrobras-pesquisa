@@ -16,6 +16,10 @@
     }
   }
 
+ .outset {
+    border-style: outset;
+  }
+
 .logo-petro-navbar {
     height: 40px;
 }
@@ -37,7 +41,6 @@
 .div-container {
     display: flex;
     justify-content: center;
-<<<<<<< HEAD
     align-items: top;
     height: 100vh;
 }
@@ -48,13 +51,4 @@
     height: 640px;
     /* border-bottom-left-radius: 70px;
     border-bottom-right-radius: 70px; */
-=======
-    align-items: center;
-}
-
-.main-div {
-    background-color: grey;
-    width: 480px;
-    height: 800px;
->>>>>>> 6230054ffa6c8c876f583c77410766442cefd98b
 }
