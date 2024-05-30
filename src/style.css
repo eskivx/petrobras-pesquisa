@@ -20,6 +20,14 @@
     border-style: outset;
   }
 
+  #h1-home{
+    font-weight: bold;
+  }
+
+.justified-center {
+  text-align: center;
+}
+
 .logo-petro-navbar {
     height: 40px;
 }
@@ -32,6 +40,19 @@
 .logo-nome-navbar {
     height: 20px;
     margin: 0 10px;
+}
+
+#container-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 80%;
+  align-items: center;
+}
+
+.paragrafo-home {
+  font-size: 1.5rem;
 }
 
 .nav-link {
