@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testar cep</title>
+</head>
+<body>
+cep
+<input type="text" name="cep" id="cep">  <input type="button" value="pesquisar" onclick="pesquisacep(cep.value)"> <br>
+rua
+<input type="text" name="rua" id="rua"> <br>
+bairro
+<input type="text" name="bairro" id="bairro"><br>
+cidade
+<input type="text" name="cidade" id="cidade"><br>
+uf
+<input type="text" name="uf" id="uf"><br>
+ibge
+<input type="text" name="ibge" id="ibge"><br>
+
+
+validar cpf 
+<input type="text" name="cpf" id="cpf"> <input type="button" value="validar Cpf" onclick="validarCPF(cpf.value)">
+
+<div id="res">
+
+</div>
+
+
+    
+</body>
+
+<script src="/petrobras-pesquisa/Controller/consultaCep.js"></script>
+<script src="/petrobras-pesquisa/Controller/validarCpf.js"></script>
+
+
+</html>
