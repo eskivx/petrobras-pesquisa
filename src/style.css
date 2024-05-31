@@ -59,11 +59,14 @@
     font-size:x-large !important;
 }
 
+.round-corner {
+  border-radius: 50px;;
+}
+
 .div-container {
     display: flex;
     justify-content: center;
     align-items: top;
-    height: 100vh;
 }
 
 .main-div {
