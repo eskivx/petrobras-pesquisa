@@ -20,6 +20,10 @@
     border-style: outset;
   }
 
+  .tudo {
+    font-family: "Roboto", sans-serif;
+  }
+
   #h1-home{
     font-weight: bold;
   }
@@ -40,6 +44,18 @@
 .logo-nome-navbar {
     height: 20px;
     margin: 0 10px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.interior-cadastro {
+  display: flex;
+  flex-direction: column;
+
 }
 
 #container-home {
