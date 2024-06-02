@@ -61,7 +61,7 @@
 #container-home {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 100%;
   width: 80%;
   align-items: center;

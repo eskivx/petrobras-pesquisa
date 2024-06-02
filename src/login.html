@@ -14,12 +14,12 @@
 <body class="tudo">
   <nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style="background-color: #373737 !important;">
     <div class="container-fluid">
-      <a href="./index.html">
-        <div>
-          <img class="logo-petro-navbar" src="../images/logo-petrobras.svg" alt="logo petrobras">
-          <img class="logo-nome-navbar" src="../images/nome-petrobras.svg" alt="logo petrobras branco">
-        </div>
-      </a>
+        <a href="./index.html">
+            <div>
+              <img class="logo-petro-navbar" src="../images/logo-petrobras.svg" alt="logo petrobras">
+              <img class="logo-nome-navbar" src="../images/nome-petrobras.svg" alt="logo petrobras branco">
+            </div>
+          </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <img class="navbar-toggler-icon" ></img>
       </button>
@@ -54,41 +54,26 @@
       <div class="main-div justified-center my-5 round-corner">
         <div class="container py-5" id="container-home">
           <div class="interior-cadastro">
-            <h1>Cadastro</h1>
+            <h1>Login</h1>
             <form action="/action_page.php"><br>
               <div class="formulario">
                   <div>
-                  <label for="nome">Nome:</label>
-                  <input type="text" id="nome" name="nome"><br><br>
+                  <label for="usuario">Usuário:</label>
+                  <input type="text" id="usuario" name="usuario"><br><br>
                   </div> 
                   <div>
-                  <label for="sobrenome">Sobrenome:</label>
-                  <input type="text" id="sobrenome" name="sobrenome"><br><br>
+                  <label for="senha">Senha:</label>
+                  <input type="text" id="senha" name="senha"><br><br>
                   </div> 
-                  <div>
-                  <label for="datanasc">Data nascimento:</label>
-                  <input type="text" id="datanasc" name="datanasc"><br><br>
-                  </div> 
-                  <div>
-                  <label for="cpf">CPF:</label>
-                  <input type="text" id="cpf" name="cpf"><br><br>
-                  </div>
-                  <div>
-                  <label for="email">E-mail:</label>
-                  <input type="text" id="email" name="email"><br><br>
-                  </div>
-                  <div>
-                  <label for="cep">CEP:</label>
-                  <input type="text" id="cep" name="cep"><br><br>
-                  </div>
-                  <div>
-                  <label for="genero">Gênero:</label>
-                  <input type="text" id="genero" name="genero"><br><br>
-                  </div>
+                  <a href="">Esqueceu senha?</a>
                 </form>
-              </div>
-            </div> 
-            <input type="submit" class="btn btn-dark btn-lg my-5 col-6"value="Enviar" style="width: 100px;">
+            </div>
+        </div> 
+        <input type="submit" class="btn btn-dark my-5 btn-lg col-6" value="Enviar" style="width: 100px;">
+        <div>
+        <p>Não tem senha?</p>
+        <a href="./cadastro.html"><input class="btn btn-secondary btn-lg  col-6" style="width: 150px;" value="Cadastre-se"></a>
+        </div>
         </div>
       </div>
       </div>
