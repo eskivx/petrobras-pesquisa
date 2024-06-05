@@ -15,11 +15,11 @@
     <nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style="background-color: #373737 !important;">
         <div class="container-fluid">
           <a href="./index.html">
-          <div>
-            <img class="logo-petro-navbar" src="../images/logo-petrobras.svg" alt="logo petrobras">
-            <img class="logo-nome-navbar" src="../images/nome-petrobras.svg" alt="logo petrobras branco">
-          </div>
-        </a>
+            <div>
+              <img class="logo-petro-navbar" src="../images/logo-petrobras.svg" alt="logo petrobras">
+              <img class="logo-nome-navbar" src="../images/nome-petrobras.svg" alt="logo petrobras branco">
+            </div>
+          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <img class="navbar-toggler-icon" ></img>
           </button>
@@ -29,7 +29,7 @@
                 <a class="nav-link" aria-current="page" href="./login.html">LOGIN</a>
               </li>
               <li class="nav-item px-2">
-                <a class="nav-link active" aria-current="page" href="./index.html">HOME</a>
+                <a class="nav-link" aria-current="page" href="./index.html">HOME</a>
               </li>
               <li class="nav-item px-2">
                 <a class="nav-link" href="./pesquisa.html">PESQUISA</a>
@@ -38,7 +38,7 @@
                 <a class="nav-link" href="./cadastro.html">CADASTRO</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   PERFIL
                 </a>
                 <ul class="dropdown-menu">
@@ -46,7 +46,7 @@
                   <li><a class="dropdown-item" href="./perfil-alterar.html">ALTERAR</a></li>
                 </ul>
                 <li class="nav-item px-2">
-                  <a class="nav-link" href="./index.html">SAIR</a>
+                  <a class="nav-link" href="#">SAIR</a>
                 </li>
               </li>
             </ul>
@@ -55,13 +55,44 @@
       </nav>
       <div class="div-container gradient-background">
       <div class="main-div justified-center my-5 round-corner">
-        <div class="container" id="container-home">
-        <h1 class="my-4" id="h1-home">Bem-vindo</h1>
-        <h2 class="my-4">Ajude   a   sua   comunidade!</h2>
-        <p class="my-4 paragrafo-home">Queremos   saber   mais   sobre  os  moradores   ao   redor  dos  projetos   da   Petrobras.</p>
-        <p class="my-4 paragrafo-home">Responda   as   perguntas   e contribua   para   a   sua   comunidade!</p>
-        <a href="./login.html"><button class="btn btn-dark btn-lg my-5 col-6" style="width: 150px;" type="button" >Responder</button>
-        </a>
+        <div class="container py-5" id="container-home">
+            <div class="interior-cadastro">
+                <h1>Cadastro</h1>
+                <form action="/action_page.php"><br>
+                  <div class="formulario">
+                      <div>
+                      <label for="nome">Nome:</label>
+                      <input type="text" id="nome" name="nome"><br><br>
+                      </div> 
+                      <div>
+                      <label for="sobrenome">Sobrenome:</label>
+                      <input type="text" id="sobrenome" name="sobrenome"><br><br>
+                      </div> 
+                      <div>
+                      <label for="datanasc">Data nascimento:</label>
+                      <input type="text" id="datanasc" name="datanasc"><br><br>
+                      </div> 
+                      <div>
+                      <label for="cpf">CPF:</label>
+                      <input type="text" id="cpf" name="cpf"><br><br>
+                      </div>
+                      <div>
+                      <label for="email">E-mail:</label>
+                      <input type="text" id="email" name="email"><br><br>
+                      </div>
+                      <div>
+                      <label for="cep">CEP:</label>
+                      <input type="text" id="cep" name="cep"><br><br>
+                      </div>
+                      <div>
+                      <label for="genero">Gênero:</label>
+                      <input type="text" id="genero" name="genero"><br><br>
+                      </div>
+                    </form>
+                  </div>
+                </div> 
+                <input type="submit" class="btn btn-dark btn-lg my-5 col-6"value="Enviar" style="width: 100px;">
+            </div>
         </div>
       </div>
       </div>
