@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    
+    <script src="/petrobras-pesquisa/backend/consultacep.js"></script>
 </head>
 <body class="tudo">
   <nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style="background-color: #373737 !important;">
@@ -82,11 +82,15 @@
                   </div>
                   <div>
                   <label for="cep">CEP:</label>
-                  <input type="text" id="cep" name="cep"><br><br>
+                  <input type="text" id="cep" name="cep" onblur="pesquisacep(cep.value)"><br><br>
                   </div>
                   <div>
                   <label for="genero">Gênero:</label>
                   <input type="text" id="genero" name="genero"><br><br>
+                  </div>
+                  
+                  <div id="rescep">
+                  
                   </div>
                 </form>
               </div>
