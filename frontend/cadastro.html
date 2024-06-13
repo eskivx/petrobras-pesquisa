@@ -65,10 +65,14 @@
                   <label for="email">E-mail:</label>
                   <input type="text" id="email" name="email" required><br><br>
                   </div>
+
+                  
                   <div>
                   <label for="cep">CEP:</label>
-                  <input type="text" id="cep" name="cep" required><br><br>
+                   <input type="text" id="cep" name="cep" required onblur="pesquisacep(cep.value)"><br><br> 
                   </div>
+
+
                   <div>
                   <label for="senha">Senha:</label>
                   <input type="password" id="senha" name="senha" required><br><br>
@@ -76,10 +80,12 @@
                 </form>
               </div>
             </div> 
+            <p id="rescep"></p>
             <input type="submit" class="btn btn-dark btn-lg my-5 col-6"value="Enviar" style="width: 100px;">
         </div>
       </div>
       </div>
+    <script src="/petrobras-pesquisa/backend/consulta cep.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
