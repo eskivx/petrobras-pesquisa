@@ -2,9 +2,9 @@
 
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './Home.css';
 
-function App() {
+function Home() {
   return (
     <div className="tudo">
       <nav className="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style={{ backgroundColor: '#373737 !important' }}>
