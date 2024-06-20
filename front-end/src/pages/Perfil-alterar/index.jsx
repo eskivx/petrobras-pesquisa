@@ -6,9 +6,9 @@ export function Perfil_alterar() {
   return (
     <div className="tudo">
       {/* Navbar */}
-      <nav className="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style={{ backgroundColor: '#373737 !important' }}>
+      <nav className="navbar navbar-dark navbar-expand-lg" style={{ backgroundColor: '#373737 !important' }}>
         <div className="container-fluid">
-          <a href="./index.html">
+          <a href="/">
             <div>
               <img className="logo-petro-navbar" src={ logo } alt="logo petrobras" />
               <img className="logo-nome-navbar" src={ logo2} alt="logo petrobras branco" />
@@ -40,7 +40,7 @@ export function Perfil_alterar() {
                   <li><a className="dropdown-item" href="./perfil-alterar.html">ALTERAR</a></li>
                 </ul>
                 <li className="nav-item px-2">
-                  <a className="nav-link" href="#">SAIR</a>
+                  <Link className="nav-link" to="/">SAIR</Link>
                 </li>
               </li>
             </ul>

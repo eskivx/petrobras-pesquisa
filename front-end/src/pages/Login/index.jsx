@@ -6,7 +6,7 @@ import logo2 from '../../../../images/nome-petrobras.svg';
 export function Login() {
     return (
         <div className="tudo">
-            <nav className="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style={{ backgroundColor: '#373737 !important' }}>
+            <nav className="navbar navbar-dark navbar-expand-lg" style={{ backgroundColor: '#373737 !important' }}>
                 <div className="container-fluid">
                     <Link to="/">
                         <div>
@@ -41,7 +41,7 @@ export function Login() {
                                 </ul>
                             </li>
                             <li className="nav-item px-2">
-                                <Link className="nav-link" to="#">SAIR</Link>
+                                <Link className="nav-link" to="/">SAIR</Link>
                             </li>
                         </ul>
                     </div>

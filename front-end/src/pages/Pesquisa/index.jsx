@@ -6,9 +6,9 @@ import logo2 from '../../../../images/nome-petrobras.svg';
 export function Pesquisa() {
     return (
         <div className="tudo">
-            <nav className="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style={{ backgroundColor: '#373737 !important' }}>
+            <nav className="navbar navbar-dark navbar-expand-lg" style={{ backgroundColor: '#373737 !important' }}>
                 <div className="container-fluid">
-                    <Link to="./index.html">
+                    <Link to="/">
                         <div>
                             <img className="logo-petro-navbar" src={logo} alt="logo petrobras" />
                             <img className="logo-nome-navbar" src={logo2} alt="logo petrobras branco" />
@@ -39,10 +39,10 @@ export function Pesquisa() {
                                     <li><Link className="dropdown-item" to="perfil-acessar">ACESSAR</Link></li>
                                     <li><Link className="dropdown-item" to="perfil-alterar">ALTERAR</Link></li>
                                 </ul>
-                                <li className="nav-item px-2">
-                                    <Link className="nav-link" to="#">SAIR</Link>
-                                </li>
                             </li>
+                                <li className="nav-item px-2">
+                                    <Link className="nav-link" to="/">SAIR</Link>
+                                </li>
                         </ul>
                     </div>
                 </div>
