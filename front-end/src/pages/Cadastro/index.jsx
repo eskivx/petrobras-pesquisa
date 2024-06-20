@@ -1,9 +1,9 @@
 
 import React from 'react';
-import './style.css'; 
-import consultaCep from '/petrobras-pesquisa/backend/consulta cep.js'; 
+import { Link } from 'react-router-dom';
+// import consultaCep from '../../../backend/consulta cep.js'; 
 
-function Cadastro() {
+export function Cadastro() {
     return (
         <div className="tudo">
             <nav className="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style={{ backgroundColor: '#373737 !important' }}>
@@ -20,21 +20,21 @@ function Cadastro() {
                     <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                         <ul className="navbar-nav ">
                             <li className="nav-item px-2">
-                                <a className="nav-link" aria-current="page" href="./login.html">LOGIN</a>
+                                <Link className="nav-link" aria-current="page" to="/login">LOGIN</Link>
                             </li>
                             <li className="nav-item px-2">
-                                <a className="nav-link" aria-current="page" href="./index.html">HOME</a>
+                                <Link className="nav-link" aria-current="page" to="/">HOME</Link>
                             </li>
                             <li className="nav-item px-2">
-                                <a className="nav-link" href="./pesquisa.html">PESQUISA</a>
+                                <Link className="nav-link" to="/pesquisa">PESQUISA</Link>
                             </li>
                             <li className="nav-item px-2">
-                                <a className="nav-link active" href="./cadastro.html">CADASTRO</a>
+                                <Link className="nav-link active" to="/cadastro">CADASTRO</Link>
                             </li>
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     PERFIL
-                                </a>
+                                </Link>
                                 <ul className="dropdown-menu">
                                     <li><a className="dropdown-item" href="./perfil-acessar.html">ACESSAR</a></li>
                                     <li><a className="dropdown-item" href="./perfil-alterar.html">ALTERAR</a></li>
@@ -80,5 +80,3 @@ function Cadastro() {
         </div>
     );
 }
-
-export default Cadastro;

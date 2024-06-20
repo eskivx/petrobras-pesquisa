@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Perfil_Acessar() {
+export function Perfil_acessar() {
     return (
         <div className="tudo">
             <nav className="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style={{ backgroundColor: '#373737 !important' }}>
@@ -17,10 +18,10 @@ function Perfil_Acessar() {
                     <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                         <ul className="navbar-nav ">
                             <li className="nav-item px-2">
-                                <a className="nav-link" aria-current="page" href="./login.html">LOGIN</a>
+                                <Link className="nav-link" aria-current="page" to="/login">LOGIN</Link>
                             </li>
                             <li className="nav-item px-2">
-                                <a className="nav-link" aria-current="page" href="./index.html">HOME</a>
+                              <Link className="nav-link" aria-current="page" to="/">HOME</Link>
                             </li>
                             <li className="nav-item px-2">
                                 <a className="nav-link" href="./pesquisa.html">PESQUISA</a>
@@ -90,5 +91,3 @@ function Perfil_Acessar() {
         </div>
     );
 }
-
-export default PerfilAcessar;
