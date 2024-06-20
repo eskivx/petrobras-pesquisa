@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../../../images/logo-petrobras.svg';
+import logo2 from '../../../../images/nome-petrobras.svg';
 
 export function Login() {
     return (
@@ -8,8 +10,8 @@ export function Login() {
                 <div className="container-fluid">
                     <Link to="/">
                         <div>
-                            <img className="logo-petro-navbar" src="../images/logo-petrobras.svg" alt="logo petrobras" />
-                            <img className="logo-nome-navbar" src="../images/nome-petrobras.svg" alt="logo petrobras branco" />
+                            <img className="logo-petro-navbar" src={logo} alt="logo petrobras" />
+                            <img className="logo-nome-navbar" src={logo2} alt="logo petrobras branco" />
                         </div>
                     </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
