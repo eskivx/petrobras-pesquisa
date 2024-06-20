@@ -26,7 +26,8 @@ class Questionario(db.Model):
     q9=db.Column(db.Integer(),nullable=False)
     q10=db.Column(db.Integer(),nullable=False)
 
-
+    def __repr__(self):
+        return f"<id do questionário{self.id}>"
   
     def save(self):
         db.session.add(self)
