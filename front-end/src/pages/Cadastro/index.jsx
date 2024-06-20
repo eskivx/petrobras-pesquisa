@@ -1,11 +1,28 @@
 
 import React from 'react';
+import { useState,useEffect,useRef } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../images/logo-petrobras.svg';
 import logo2 from '../../../../images/nome-petrobras.svg';
-// import consultaCep from '../../../backend/consulta cep.js'; 
+import {pesquisacep, meuCallback} from '../../../../backend/consulta cep'; 
 
 export function Cadastro() {
+
+    const [cep, setCep] = useState('');
+    const [mensagem, setMensagem] = useState('');
+    const rescepRef = useRef(null);
+
+    useEffect(() => {
+        window.handleCallback = (conteudo) => meuCallback(conteudo, setMensagem);
+    }, []);
+
+    const handleCepChange = (e) => {
+        setCep(e.target.value);
+    };
+
+    const handleCepBlur = () => {
+        pesquisacep(cep, setCep, setMensagem);
+    };
     return (
         <div className="tudo">
             <nav className="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style={{ backgroundColor: '#373737 !important' }}>
@@ -63,7 +80,15 @@ export function Cadastro() {
                                     </div>
                                     <div>
                                         <label htmlFor="cep">CEP:</label>
-                                        <input type="text" id="cep" name="cep" required onBlur={() => consultaCep(cep.value)} /><br /><br />
+                                        <input
+                                            type="text"
+                                            id="cep"
+                                            name="cep"
+                                            required
+                                            value={cep}
+                                            onChange={handleCepChange}
+                                            onBlur={handleCepBlur}
+                                        /><br /><br />
                                     </div>
                                     <div>
                                         <label htmlFor="senha">Senha:</label>
@@ -72,7 +97,7 @@ export function Cadastro() {
                                 </div>
                             </form>
                         </div>
-                        <p id="rescep"></p>
+                        <p ref={rescepRef} id="rescep">{mensagem}</p>
                         <input type="submit" className="btn btn-dark btn-lg my-5 col-6" value="Enviar" style={{ width: '100px' }} />
                     </div>
                 </div>
