@@ -70,7 +70,7 @@ export function Login() {
                         <input type="submit" className="btn btn-dark my-5 btn-lg col-6" value="Enviar" style={{ width: '100px' }} />
                         <div>
                             <p>Não tem senha?</p>
-                            <Link to="./cadastro.html"><input className="btn btn-secondary btn-lg col-6" style={{ width: '150px' }} value="Cadastre-se" /></Link>
+                            <Link to="/cadastro"><input className="btn btn-secondary btn-lg col-6" style={{ width: '150px' }} value="Cadastre-se" /></Link>
                         </div>
                     </div>
                 </div>
