@@ -1,4 +1,5 @@
 from flask_restx import Namespace, Resource, fields
+from flask import Flask, request, jsonify
 from models import Questionario
 from flask_jwt_extended import jwt_required
 
