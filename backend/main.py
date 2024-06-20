@@ -1,10 +1,11 @@
 from flask import Flask
 from flask_restx import Api
-from models import User,Questionario
+from models import Usuario,Questionario
 from exts import db
 from flask_jwt_extended import JWTManager
 from questionario import questionario_ns
 from auth import auth_ns
+
 
 def create_app(config): 
     app = Flask(__name__)
@@ -28,7 +29,7 @@ def create_app(config):
         return {
             "db":db,
             "questionario":Questionario,
-            "user":User
+            "usuario":Usuario
             
         }
 

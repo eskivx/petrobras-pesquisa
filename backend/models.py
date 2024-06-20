@@ -1,13 +1,18 @@
 from exts import db
 
-class User(db.Model):
+class Usuario(db.Model):
     id=db.Column(db.Integer(),primary_key=True)
     email=db.Column(db.String(100), nullable=False, unique=True)
     senha=db.Column(db.Text(), nullable=False)
     cep=db.Column(db.String(10), nullable=False)
+    respondeu=db.Column(db.Boolean())
+    cepvalido=db.Column(db.Boolean())
+    ehadmin=db.Column(db.Boolean())
+
+    
 
     def __repr__(self):
-        return f"<User {self.email}>"
+        return f"<Usuario {self.email}>"
     
     def save(self):
         db.session.add(self)
