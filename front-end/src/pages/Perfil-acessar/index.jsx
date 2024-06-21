@@ -2,51 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../images/logo-petrobras.svg';
 import logo2 from '../../../../images/nome-petrobras.svg';
+import { Navbar } from '../../componentes/Navbar';
 
 export function Perfil_acessar() {
     return (
         <div className="tudo">
-            <nav className="navbar navbar-dark navbar-expand-lg" style={{ backgroundColor: '#373737 !important' }}>
-                <div className="container-fluid">
-                    <a href="/">
-                        <div>
-                            <img className="logo-petro-navbar" src={logo} alt="logo petrobras" />
-                            <img className="logo-nome-navbar" src={logo2} alt="logo petrobras branco" />
-                        </div>
-                    </a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <img className="navbar-toggler-icon" />
-                    </button>
-                    <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                        <ul className="navbar-nav ">
-                            <li className="nav-item px-2">
-                                <Link className="nav-link" aria-current="page" to="/login">LOGIN</Link>
-                            </li>
-                            <li className="nav-item px-2">
-                              <Link className="nav-link" aria-current="page" to="/">HOME</Link>
-                            </li>
-                            <li className="nav-item px-2">
-                                <a className="nav-link" href="./pesquisa.html">PESQUISA</a>
-                            </li>
-                            <li className="nav-item px-2">
-                                <a className="nav-link" href="./cadastro.html">CADASTRO</a>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    PERFIL
-                                </a>
-                                <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="./perfil-acessar.html">ACESSAR</a></li>
-                                    <li><a className="dropdown-item" href="./perfil-alterar.html">ALTERAR</a></li>
-                                </ul>
-                                <li className="nav-item px-2">
-                                    <Link className="nav-link" to="/">SAIR</Link>
-                                </li>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            <Navbar />
             <div className="div-container gradient-background">
                 <div className="main-div justified-center my-5 round-corner">
                     <div className="container py-5" id="container-home">
