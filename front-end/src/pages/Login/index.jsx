@@ -6,10 +6,10 @@ import { Navbar } from '../../componentes/Navbar';
 
 export function Login() {
     return (
-        <div className="tudo">
+        <div className="tudo div-master">
             <Navbar/>
 
-            <div className="div-container gradient-background">
+            <div className="div-container gradient-background div-master">
                 <div className="main-div justified-center my-5 round-corner">
                     <div className="container py-5" id="container-home">
                         <div className="interior-cadastro">
