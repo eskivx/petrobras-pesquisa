@@ -4,13 +4,15 @@ export function limpaFormularioCep(setCep, setMensagem) {
     setMensagem('');
 }
 
-export function meuCallback(conteudo, setMensagem) {
+export function meuCallback(conteudo, setMensagem, setCepValido) {
     if (!("erro" in conteudo)) {
         const localidade = String(conteudo.localidade);
         if (localidade === "Florianópolis" || localidade === "Tijucas") {
             setMensagem("Cep Válido!");
+            setCepValido(true)
         } else {
             setMensagem("Cep Inválido!");
+            setCepValido(false)
         }
     } else {
         setMensagem("CEP não encontrado.");
