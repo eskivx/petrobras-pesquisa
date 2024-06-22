@@ -9,9 +9,10 @@ import '../../index.css'
 export function Home() {
   return (
       <>
+      <body>
       <Navbar/>
-      <div className="tudo">
-      <div className="div-container gradient-background">
+      <div className="tudo div-master">
+      <div className="div-container gradient-background div-master">
         <div className="main-div justified-center my-5 round-corner">
           <div className="container" id="container-home">
             <h1 className="my-4" id="h1-home">Bem-vindo</h1>
@@ -23,6 +24,7 @@ export function Home() {
         </div>
       </div>
       </div>
+      </body>
       </>
   );
 }

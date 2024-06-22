@@ -4,13 +4,13 @@ import logo from '../../../../images/logo-petrobras.svg';
 import logo2 from '../../../../images/nome-petrobras.svg';
 export function Perfil_alterar() {
   return (
-    <div className="tudo">
+    <div className="tudo div-master">
       {/* Navbar */}
       <Navbar />
       
 
       {/* Conteúdo principal */}
-      <div className="div-container gradient-background">
+      <div className="div-container gradient-background div-master">
         <div className="main-div justified-center my-5 round-corner">
           <div className="container py-5" id="container-home">
             <div className="interior-cadastro">
