@@ -51,6 +51,4 @@ class QuestionarioResource(Resource):
             q10=data.get('q10')
         )
         new_questionario.save()
-        return  jsonify(
-            {"mensagem":"teste" }
-        )
+        return  new_questionario
