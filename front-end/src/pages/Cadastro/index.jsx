@@ -1,18 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { pesquisacep, meuCallback } from '../../../../backend/consulta cep';
 import { Navbar } from '../../componentes/Navbar';
 import logo from '../../../../images/logo-petrobras.svg';
 import logo2 from '../../../../images/nome-petrobras.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 
 export function Cadastro() {
     const [cep, setCep] = useState('');
-    const [email, setEmail] = useState(''); // State for email
-    const [senha, setSenha] = useState(''); // State for senha
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
     const [mensagem, setMensagem] = useState('');
-    const [cepValido, setCepValido] = useState(false); // State to validate CEP
-    const rescepRef = useRef(null);
+    const [cepValido, setCepValido] = useState(false);
+    const [emailValido, setEmailValido] = useState(false);
+    const [senhaValida, setSenhaValida] = useState(false);
+    const [formEnviado, setFormEnviado] = useState(false); // Estado para controlar se o formulário foi enviado
 
     useEffect(() => {
         window.handleCallback = (conteudo) => meuCallback(conteudo, setMensagem, setCepValido);
@@ -27,27 +29,75 @@ export function Cadastro() {
     };
 
     const handleEmailChange = (e) => {
-        setEmail(e.target.value);
+        const { value } = e.target;
+        setEmail(value);
     };
 
     const handleSenhaChange = (e) => {
-        setSenha(e.target.value);
+        const { value } = e.target;
+        setSenha(value);
     };
+
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        
+        validarCampos();
 
-        // Create JSON object with form data
+       
+        if (!emailValido || !cepValido || !senhaValida) {
+            return;
+        }
+
+        
         const formData = {
             email: email,
             senha: senha,
             cep: cep,
-            cepvalido: cepValido // Include CEP validation in JSON
+            cepvalido: cepValido
         };
+
+
 
         console.log('Form data:', formData);
 
-        // Here you can send the data to the backend or do whatever is necessary
+        navigate('/login')
+
+        
+
+        
+        limparFormulario();
+    };
+
+    const validarCampos = () => {
+        
+        setEmailValido(validateEmail(email));
+        setCepValido(validateCep(cep));
+        setSenhaValida(validateSenha(senha));
+    };
+
+    const validateEmail = (email) => {
+        
+        return email.length > 0; 
+    };
+
+    const validateCep = (cep) => {
+        
+        return cep.length > 0; 
+    };
+
+    const validateSenha = (senha) => {
+        
+        return senha.length >= 6; 
+    };
+
+    const limparFormulario = () => {
+        setEmail('');
+        setSenha('');
+        setCep('');
+        setFormEnviado(false); 
     };
 
     return (
@@ -61,6 +111,7 @@ export function Cadastro() {
                             <h1>Cadastro</h1>
                             <form onSubmit={handleSubmit}>
                                 <div className="formulario">
+                                    <br></br>
                                     <Form.Group>
                                         <Form.Label>Email</Form.Label>
                                         <Form.Control
@@ -69,9 +120,13 @@ export function Cadastro() {
                                             name="email"
                                             value={email}
                                             onChange={handleEmailChange}
+                                            isInvalid={!emailValido && formEnviado} 
                                         />
+                                        <Form.Control.Feedback type="invalid">
+                                            Por favor, insira um email válido.
+                                        </Form.Control.Feedback>
                                     </Form.Group>
-
+                                    <br></br>
                                     <Form.Group>
                                         <Form.Label>CEP</Form.Label>
                                         <Form.Control
@@ -81,9 +136,13 @@ export function Cadastro() {
                                             value={cep}
                                             onChange={handleCepChange}
                                             onBlur={handleCepBlur}
+                                            isInvalid={!cepValido && formEnviado} 
                                         />
+                                        <Form.Control.Feedback type="invalid">
+                                            Por favor, insira um CEP válido.
+                                        </Form.Control.Feedback>
                                     </Form.Group>
-
+                                    <br></br>
                                     <Form.Group>
                                         <Form.Label>Senha</Form.Label>
                                         <Form.Control
@@ -92,12 +151,20 @@ export function Cadastro() {
                                             name="senha"
                                             value={senha}
                                             onChange={handleSenhaChange}
+                                            isInvalid={!senhaValida && formEnviado} 
                                         />
+                                        <Form.Control.Feedback type="invalid">
+                                            Por favor, insira uma senha válida.
+                                        </Form.Control.Feedback>
                                     </Form.Group>
                                 </div>
-                                <p ref={rescepRef} id="rescep">{mensagem}</p>
-                                <input type="submit" className="btn btn-dark btn-lg my-5 col-6" value="Enviar" style={{ width: '100px' }} />
+                                <p id="rescep">{mensagem}</p>
+                                <input type="submit" className="btn btn-dark btn-lg my-5 col-6" value="Enviar" style={{ width: '100px' }} onClick={() => setFormEnviado(true)} />
+                                <Form.Group>
+                                    <small>Já possui conta?  <Link to="/login">Login</Link></small>
+                                </Form.Group>
                             </form>
+                            
                         </div>
                     </div>
                 </div>
