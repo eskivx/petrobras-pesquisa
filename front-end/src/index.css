@@ -126,6 +126,10 @@ text-align: center;
   margin: 0 10px;
 }
 
+.round-corners {
+  border-radius: 50px;
+}
+
 .formulario {
 display: flex;
 flex-direction: column;
