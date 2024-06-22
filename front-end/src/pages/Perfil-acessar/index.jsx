@@ -15,22 +15,9 @@ export function Perfil_acessar() {
                             <h1>Cadastro</h1>
                             <form action="/action_page.php"><br />
                                 <div className="formulario">
-                                    <div>
-                                        <label htmlFor="nome">Nome:</label>
-                                        <input type="text" id="nome" name="nome" /><br /><br />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="sobrenome">Sobrenome:</label>
-                                        <input type="text" id="sobrenome" name="sobrenome" /><br /><br />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="datanasc">Data nascimento:</label>
-                                        <input type="text" id="datanasc" name="datanasc" /><br /><br />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="cpf">CPF:</label>
-                                        <input type="text" id="cpf" name="cpf" /><br /><br />
-                                    </div>
+                                  
+                                   
+                                    
                                     <div>
                                         <label htmlFor="email">E-mail:</label>
                                         <input type="text" id="email" name="email" /><br /><br />
@@ -39,10 +26,7 @@ export function Perfil_acessar() {
                                         <label htmlFor="cep">CEP:</label>
                                         <input type="text" id="cep" name="cep" /><br /><br />
                                     </div>
-                                    <div>
-                                        <label htmlFor="genero">Gênero:</label>
-                                        <input type="text" id="genero" name="genero" /><br /><br />
-                                    </div>
+                                
                                 </div>
                             </form>
                         </div>

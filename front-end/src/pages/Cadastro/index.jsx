@@ -4,11 +4,14 @@ import { Navbar } from '../../componentes/Navbar';
 import logo from '../../../../images/logo-petrobras.svg';
 import logo2 from '../../../../images/nome-petrobras.svg';
 import { Link } from 'react-router-dom';
+import { Form } from 'react-bootstrap';
 
 export function Cadastro() {
     const [cep, setCep] = useState('');
+    const [email, setEmail] = useState(''); // State for email
+    const [senha, setSenha] = useState(''); // State for senha
     const [mensagem, setMensagem] = useState('');
-    const [cepValido, setCepValido] = useState(false); // Estado para validar CEP
+    const [cepValido, setCepValido] = useState(false); // State to validate CEP
     const rescepRef = useRef(null);
 
     useEffect(() => {
@@ -23,20 +26,28 @@ export function Cadastro() {
         pesquisacep(cep, setCep, setMensagem);
     };
 
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    };
+
+    const handleSenhaChange = (e) => {
+        setSenha(e.target.value);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Criar objeto JSON com os dados do formulário
+        // Create JSON object with form data
         const formData = {
-            email: e.target.email.value,
-            senha: e.target.senha.value,
+            email: email,
+            senha: senha,
             cep: cep,
-            cepvalido: cepValido // Inclui a validação do CEP no JSON
+            cepvalido: cepValido // Include CEP validation in JSON
         };
 
-        console.log('Dados do formulário:', formData);
+        console.log('Form data:', formData);
 
-        // Aqui você pode enviar os dados para o backend ou fazer o que for necessário
+        // Here you can send the data to the backend or do whatever is necessary
     };
 
     return (
@@ -50,26 +61,39 @@ export function Cadastro() {
                             <h1>Cadastro</h1>
                             <form onSubmit={handleSubmit}>
                                 <div className="formulario">
-                                    <div>
-                                        <label htmlFor="email">E-mail:</label>
-                                        <input type="text" id="email" name="email" required /><br /><br />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="cep">CEP:</label>
-                                        <input
+                                    <Form.Group>
+                                        <Form.Label>Email</Form.Label>
+                                        <Form.Control
                                             type="text"
-                                            id="cep"
+                                            placeholder="Seu e-mail"
+                                            name="email"
+                                            value={email}
+                                            onChange={handleEmailChange}
+                                        />
+                                    </Form.Group>
+
+                                    <Form.Group>
+                                        <Form.Label>CEP</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            placeholder="ex.: 88000-000"
                                             name="cep"
-                                            required
                                             value={cep}
                                             onChange={handleCepChange}
                                             onBlur={handleCepBlur}
-                                        /><br /><br />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="senha">Senha:</label>
-                                        <input type="password" id="senha" name="senha" required /><br /><br />
-                                    </div>
+                                        />
+                                    </Form.Group>
+
+                                    <Form.Group>
+                                        <Form.Label>Senha</Form.Label>
+                                        <Form.Control
+                                            type="password"
+                                            placeholder="Sua senha"
+                                            name="senha"
+                                            value={senha}
+                                            onChange={handleSenhaChange}
+                                        />
+                                    </Form.Group>
                                 </div>
                                 <p ref={rescepRef} id="rescep">{mensagem}</p>
                                 <input type="submit" className="btn btn-dark btn-lg my-5 col-6" value="Enviar" style={{ width: '100px' }} />
