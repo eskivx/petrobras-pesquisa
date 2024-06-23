@@ -5,9 +5,12 @@ import logo from '../../../../images/logo-petrobras.svg';
 import logo2 from '../../../../images/nome-petrobras.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import {Navbar} from '../../componentes/Navbar'
 
 export function Pergunta3() {
     return (
+            <>
+            <Navbar/>
             <div className="div-container gradient-background div-master">
                 <div className="main-div justified-center my-5 round-corner">
                     <div className="container" id="container-home">
@@ -33,9 +36,12 @@ export function Pergunta3() {
                             <input type="radio" id="roxo" name="cor" value="roxo" />
                             <label htmlFor="roxo">Muito longe</label><br />
                         </div>
+                        <div className='width100'>
+                        <Link to="/pergunta2"><button className="btn btn-outline-secondary btn-lg my-5 col-6" type="button">Voltar</button></Link>
                         <Link to="/pergunta4"><button className="btn btn-dark btn-lg my-5 col-6" type="button">Responder</button></Link>
-                    </div>
+                        </div></div>
                 </div>
             </div>
+            </>
             );
         };

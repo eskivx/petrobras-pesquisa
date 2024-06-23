@@ -116,6 +116,10 @@ text-align: center;
   height: 70px;
 }
 
+.width100{
+  width: 100%;
+}
+
 .branco {
   fill: white;
   color: white;

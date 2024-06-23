@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import logo from '../../../../images/logo-petrobras.svg';
 import logo2 from '../../../../images/nome-petrobras.svg';
 import { Navbar } from '../../componentes/Navbar';
-import {Pergunta2} from '../Pergunta2'
 
 export function Pesquisa() {
     return (
@@ -35,7 +34,9 @@ export function Pesquisa() {
                             <input type="radio" id="roxo" name="cor" value="roxo" />
                             <label htmlFor="roxo">Abaixo de um salário mínimo</label><br />
                         </div>
+                        <div className='width100'>
                         <Link to="/pergunta2"><button className="btn btn-dark btn-lg my-5 col-6" type="button">Responder</button></Link>
+                        </div>
                     </div>
                 </div>
             </div>
