@@ -29,11 +29,11 @@ export function Pesquisa() {
                         </div>
                         <div>
                             <input type="radio" id="amarelo" name="cor" value="amarelo" />
-                            <label htmlFor="amarelo">Acima de três salários mínimos</label><br />
+                            <label htmlFor="amarelo">Acima de um salário mínimo</label><br />
                         </div>
                         <div>
-                            <input type="radio" id="amarelo" name="cor" value="amarelo" />
-                            <label htmlFor="amarelo">Abaixo de três salários mínimos</label><br />
+                            <input type="radio" id="roxo" name="cor" value="roxo" />
+                            <label htmlFor="roxo">Abaixo de um salário mínimo</label><br />
                         </div>
                         <Link to="/pergunta2"><button className="btn btn-dark btn-lg my-5 col-6" type="button">Responder</button></Link>
                     </div>

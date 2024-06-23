@@ -19,20 +19,20 @@ export function Pergunta2() {
                             <label htmlFor="vermelho">Sem ensino</label><br />
                         </div>
                         <div>
-                            <input type="radio" id="vermelho" name="cor" value="vermelho" />
-                            <label htmlFor="vermelho">Ensino Fundamental</label><br />
-                        </div>
-                        <div>
                             <input type="radio" id="azul" name="cor" value="azul" />
-                            <label htmlFor="azul">Ensino Médio</label><br />
+                            <label htmlFor="azul">Ensino Fundamental</label><br />
                         </div>
                         <div>
                             <input type="radio" id="verde" name="cor" value="verde" />
-                            <label htmlFor="verde">Ensino Superior</label><br />
+                            <label htmlFor="verde">Ensino Médio</label><br />
                         </div>
                         <div>
                             <input type="radio" id="amarelo" name="cor" value="amarelo" />
-                            <label htmlFor="amarelo">Pós-graduado</label><br />
+                            <label htmlFor="amarelo">Ensino Superior</label><br />
+                        </div>
+                        <div>
+                            <input type="radio" id="roxo" name="cor" value="roxo" />
+                            <label htmlFor="roxo">Pós-graduado</label><br />
                         </div>
                         <Link to="/pergunta3"><button className="btn btn-dark btn-lg my-5 col-6" type="button">Responder</button></Link>
                     </div>

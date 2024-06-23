@@ -30,8 +30,8 @@ export function Pergunta9() {
                             <label htmlFor="amarelo">Sim</label><br />
                         </div>
                         <div>
-                            <input type="radio" id="amarelo" name="cor" value="amarelo" />
-                            <label htmlFor="amarelo">Muito</label><br />
+                            <input type="radio" id="roxo" name="cor" value="roxo" />
+                            <label htmlFor="roxo">Muito</label><br />
                         </div>
                         <Link to="/pergunta10"><button className="btn btn-dark btn-lg my-5 col-6" type="button">Responder</button></Link>
                     </div>
