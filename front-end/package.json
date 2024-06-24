@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -17,6 +16,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.52.0",
     "react-router-dom": "^6.23.1",
+    "react-token-auth": "^2.3.8",
     "styled-components": "^6.1.11"
   },
   "proxy": "http://localhost:5000",

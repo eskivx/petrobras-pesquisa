@@ -4,6 +4,8 @@ import { Navbar } from '../../componentes/Navbar';
 import { Form, FloatingLabel, Alert } from 'react-bootstrap';
 import logo from '../../../../images/logo-petrobras.svg';
 import logo2 from '../../../../images/nome-petrobras.svg';
+import { login } from '../../auth';
+
 
 
 export function Login() {
@@ -15,6 +17,7 @@ export function Login() {
     const [show, setShow] = useState(false)
     const [serverResponse, setServerResponse] = useState('')
     const [alertVariant, setAlertVariant] = useState('')
+    const navigate = useNavigate();
 
 
     const handleEmailChange = (e) => {
@@ -27,7 +30,6 @@ export function Login() {
         setSenha(value);
     };
 
-    const navigate = useNavigate();
 
 
     const handleSubmit = (e) => {
@@ -35,6 +37,7 @@ export function Login() {
         setFormEnviado(true);
         const emailValido = validateEmail(email);
         const senhaValida = validateSenha(senha);
+        
 
         validarCampos();
 
@@ -61,10 +64,10 @@ export function Login() {
             const data = await res.json();
             if (res.ok) {
                 setServerResponse(data.mensagem);
-                setAlertVariant('success')
-                console.log(data);
-                
-                // navigate('/login');
+                setAlertVariant('success');
+                login(data.access_token);
+                console.log(data.access_token);
+                navigate('/');
             } else {
                 setServerResponse(data.mensagem || 'Erro ao enviar');
                 setAlertVariant('danger');
@@ -109,7 +112,13 @@ export function Login() {
                             <>
                                 <Alert key={alertVariant} variant={alertVariant}>
                                     <p>{serverResponse}</p>
-                                    {alertVariant === 'danger' && <Alert.Link href="/cadastro">Mude sua senha</Alert.Link>}
+                                    {alertVariant === 'danger' && (
+            <>
+                <Alert.Link href="/cadastro">Mude sua senha</Alert.Link>
+                {' ou '}
+                <Alert.Link href="/cadastro">crie uma conta</Alert.Link>
+            </>
+        )}
                                     {alertVariant === 'success' && <Alert.Link href="/cadastro">Sucesso</Alert.Link>}
                                 </Alert>
                             </> :
@@ -133,7 +142,7 @@ export function Login() {
                                             isInvalid={!validateEmail(email) && formEnviado}
                                         />
                                         <Form.Control.Feedback type="invalid">
-                                            Por favor, insira um email válido.
+                                            Por favor, insira um email.
                                         </Form.Control.Feedback>
                                         <label htmlFor="floatEmail">Email</label>
                                         </Form.Floating>
@@ -151,7 +160,7 @@ export function Login() {
                                             isInvalid={!validateSenha(senha) && formEnviado}
                                         />
                                         <Form.Control.Feedback type="invalid">
-                                            Por favor, insira uma senha válida.
+                                            Por favor, insira uma senha.
                                         </Form.Control.Feedback>
                                         <label htmlFor="floatSenha">Senha</label>
                                         </Form.Floating>
