@@ -137,10 +137,11 @@ export function Cadastro() {
                                 <div className="formulario">
                                     <br></br>
                                     <Form.Group>
-                                        <Form.Label>Email</Form.Label>
+                                    <Form.Floating className="mb-3">
                                         <Form.Control
-                                            type="text"
-                                            placeholder="Seu e-mail"
+                                            id="floatEmail"
+                                            type="email"
+                                            placeholder="e-mail"
                                             name="email"
                                             value={email}
                                             onChange={handleEmailChange}
@@ -149,11 +150,14 @@ export function Cadastro() {
                                         <Form.Control.Feedback type="invalid">
                                             Por favor, insira um email válido.
                                         </Form.Control.Feedback>
+                                        <label htmlFor="floatingInputCustom">Email</label>
+                                        </Form.Floating>
                                     </Form.Group>
-                                    <br></br>
+                                    
                                     <Form.Group>
-                                        <Form.Label>CEP</Form.Label>
+                                        <Form.Floating>
                                         <Form.Control
+                                            id="floatCep"
                                             type="text"
                                             placeholder="ex.: 88000-000"
                                             name="cep"
@@ -165,11 +169,14 @@ export function Cadastro() {
                                         <Form.Control.Feedback type="invalid">
                                             Por favor, insira um CEP válido.
                                         </Form.Control.Feedback>
+                                        <label htmlFor="floatCep">CEP  ex.: 88000-000</label>
+                                        </Form.Floating>
                                     </Form.Group>
                                     <br></br>
                                     <Form.Group>
-                                        <Form.Label>Senha</Form.Label>
+                                        <Form.Floating>
                                         <Form.Control
+                                            id="floatSenha"
                                             type="password"
                                             placeholder="Sua senha"
                                             name="senha"
@@ -180,6 +187,8 @@ export function Cadastro() {
                                         <Form.Control.Feedback type="invalid">
                                             Por favor, insira uma senha válida.
                                         </Form.Control.Feedback>
+                                        <label htmlFor="floatSenha">Senha</label>
+                                        </Form.Floating>
                                     </Form.Group>
                                 </div>
                                 <p id="rescep">{mensagem}</p>
