@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { pesquisacep, meuCallback } from '../../../../backend/consulta cep';
 import { Navbar } from '../../componentes/Navbar';
 import logo from '../../../../images/logo-petrobras.svg';
@@ -15,8 +15,8 @@ export function Cadastro() {
     const [emailValido, setEmailValido] = useState(false);
     const [senhaValida, setSenhaValida] = useState(false);
     const [formEnviado, setFormEnviado] = useState(false); // Estado para controlar se o formulário foi enviado
-    const [show,setShow]=useState(false)
-    const [serverResponse,setServerResponse]=useState('')
+    const [show, setShow] = useState(false)
+    const [serverResponse, setServerResponse] = useState('')
 
     useEffect(() => {
         window.handleCallback = (conteudo) => meuCallback(conteudo, setMensagem, setCepValido);
@@ -49,15 +49,15 @@ export function Cadastro() {
         const emailValido = validateEmail(email);
         const cepValido = validateCep(cep);
         const senhaValida = validateSenha(senha);
-        
+
         validarCampos();
 
-       
+
         if (!emailValido || !cepValido || !senhaValida) {
             return;
         }
 
-        
+
         const formData = {
             email: email,
             senha: senha,
@@ -68,13 +68,13 @@ export function Cadastro() {
 
 
 
-        
-        const requestOptions={
+
+        const requestOptions = {
             method: "POST",
-            headers:{
-                'content-type':'application/json'
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(formData)
+            body: JSON.stringify(formData)
         }
         fetch('http://localhost:5000/auth/cadastro', requestOptions)
             .then(res => res.json())
@@ -87,41 +87,41 @@ export function Cadastro() {
                 // }
             })
             .catch(err => console.log(err));
-        // navigate('/login')
 
-        
 
-        
+
+
+
         limparFormulario();
     };
 
     const validarCampos = () => {
-        
+
         setEmailValido(validateEmail(email));
         setCepValido(validateCep(cep));
         setSenhaValida(validateSenha(senha));
     };
 
     const validateEmail = (email) => {
-        
-        return email.length > 0; 
+
+        return email.length > 0;
     };
 
     const validateCep = (cep) => {
-        
-        return cep.length > 0; 
+
+        return cep.length > 0;
     };
 
     const validateSenha = (senha) => {
-        
-        return senha.length >= 6; 
+
+        return senha.length >= 6;
     };
 
     const limparFormulario = () => {
         setEmail('');
         setSenha('');
         setCep('');
-        setFormEnviado(false); 
+        setFormEnviado(false);
     };
 
     return (
@@ -144,7 +144,7 @@ export function Cadastro() {
                                             name="email"
                                             value={email}
                                             onChange={handleEmailChange}
-                                            isInvalid={!validateEmail(email) && formEnviado} 
+                                            isInvalid={!validateEmail(email) && formEnviado}
                                         />
                                         <Form.Control.Feedback type="invalid">
                                             Por favor, insira um email válido.
@@ -160,7 +160,7 @@ export function Cadastro() {
                                             value={cep}
                                             onChange={handleCepChange}
                                             onBlur={handleCepBlur}
-                                            isInvalid={!cepValido && formEnviado} 
+                                            isInvalid={!cepValido && formEnviado}
                                         />
                                         <Form.Control.Feedback type="invalid">
                                             Por favor, insira um CEP válido.
@@ -175,7 +175,7 @@ export function Cadastro() {
                                             name="senha"
                                             value={senha}
                                             onChange={handleSenhaChange}
-                                            isInvalid={!validateSenha(senha) && formEnviado} 
+                                            isInvalid={!validateSenha(senha) && formEnviado}
                                         />
                                         <Form.Control.Feedback type="invalid">
                                             Por favor, insira uma senha válida.
@@ -188,7 +188,7 @@ export function Cadastro() {
                                     <small>Já possui conta?  <Link to="/login">Login</Link></small>
                                 </Form.Group>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>

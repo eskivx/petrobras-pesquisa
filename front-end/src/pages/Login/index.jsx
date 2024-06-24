@@ -8,14 +8,21 @@ import logo2 from '../../../../images/nome-petrobras.svg';
 export function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    
+    const [emailValido, setEmailValido] = useState(false);
+    const [senhaValida, setSenhaValida] = useState(false);
+    const [formEnviado, setFormEnviado] = useState(false); // Estado para controlar se o formulário foi enviado
+    const [show, setShow] = useState(false)
+    const [serverResponse, setServerResponse] = useState('')
+
 
     const handleEmailChange = (e) => {
-        setEmail(e.target.value);
+        const { value } = e.target;
+        setEmail(value);
     };
 
     const handleSenhaChange = (e) => {
-        setSenha(e.target.value);
+        const { value } = e.target;
+        setSenha(value);
     };
 
     const navigate = useNavigate();
@@ -23,6 +30,15 @@ export function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setFormEnviado(true);
+        const emailValido = validateEmail(email);
+        const senhaValida = validateSenha(senha);
+
+        validarCampos();
+
+        if (!emailValido || !senhaValida) {
+            return;
+        }
 
         const formData = {
             email: email,
@@ -30,13 +46,55 @@ export function Login() {
             
         };
 
-        console.log('Form data:', formData);
-   
 
-        navigate('/')
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        }
+        fetch('http://localhost:5000/auth/login', requestOptions)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setServerResponse(data.message);
+                setShow(true);
+                // if (data.success) {
+                //     navigate('/');
+                // }
+            })
+            .catch(err => console.log(err));
+
+
+
+
+
+        limparFormulario();
     };
 
- 
+    const validarCampos = () => {
+
+        setEmailValido(validateEmail(email));
+        setSenhaValida(validateSenha(senha));
+    };
+
+    const validateEmail = (email) => {
+
+        return email.length > 0;
+    };
+
+    const validateSenha = (senha) => {
+
+        return senha.length > 0;
+    };
+
+    const limparFormulario = () => {
+        setEmail('');
+        setSenha('');
+        setFormEnviado(false);
+    };
+
 
     return (
         <div className="tudo div-master">
@@ -58,7 +116,11 @@ export function Login() {
                                             name="email"
                                             value={email}
                                             onChange={handleEmailChange}
+                                            isInvalid={!validateEmail(email) && formEnviado}
                                         />
+                                        <Form.Control.Feedback type="invalid">
+                                            Por favor, insira um email válido.
+                                        </Form.Control.Feedback>
                                     </Form.Group>
                                     <br></br>
                                     <Form.Group>
@@ -69,7 +131,11 @@ export function Login() {
                                             name="senha"
                                             value={senha}
                                             onChange={handleSenhaChange}
+                                            isInvalid={!validateSenha(senha) && formEnviado}
                                         />
+                                        <Form.Control.Feedback type="invalid">
+                                            Por favor, insira uma senha válida.
+                                        </Form.Control.Feedback>
                                     </Form.Group>
                                 </div>
                                 <input
@@ -77,7 +143,7 @@ export function Login() {
                                     className="btn btn-dark my-5 btn-lg col-6"
                                     value="Enviar"
                                     style={{ width: '100px' }}
-                                    
+
                                 />
                             </form>
                             <Form.Group>
