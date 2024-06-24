@@ -13,9 +13,9 @@ cadastro_model=auth_ns.model(
     {
         "email":fields.String(required=True),
         "senha":fields.String(required=True),
-        "cep":fields.String(),
+        "cep":fields.String(required=True),
         "respondeu":fields.Boolean(),
-        "cepvalido":fields.Boolean(),
+        "cepvalido":fields.Boolean(required=True),
         "ehadmin":fields.Boolean()
 
     }

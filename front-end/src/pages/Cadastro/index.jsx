@@ -15,6 +15,8 @@ export function Cadastro() {
     const [emailValido, setEmailValido] = useState(false);
     const [senhaValida, setSenhaValida] = useState(false);
     const [formEnviado, setFormEnviado] = useState(false); // Estado para controlar se o formulário foi enviado
+    const [show,setShow]=useState(false)
+    const [serverResponse,setServerResponse]=useState('')
 
     useEffect(() => {
         window.handleCallback = (conteudo) => meuCallback(conteudo, setMensagem, setCepValido);
@@ -42,7 +44,11 @@ export function Cadastro() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+        setFormEnviado(true);
+
+        const emailValido = validateEmail(email);
+        const cepValido = validateCep(cep);
+        const senhaValida = validateSenha(senha);
         
         validarCampos();
 
@@ -56,14 +62,32 @@ export function Cadastro() {
             email: email,
             senha: senha,
             cep: cep,
-            cepvalido: cepValido
+            cepvalido: cepValido,
+            respondeu: false
         };
 
 
 
-        console.log('Form data:', formData);
-
-        navigate('/login')
+        
+        const requestOptions={
+            method: "POST",
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(formData)
+        }
+        fetch('http://localhost:5000/auth/cadastro', requestOptions)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setServerResponse(data.message);
+                setShow(true);
+                // if (data.success) {
+                //     navigate('/login');
+                // }
+            })
+            .catch(err => console.log(err));
+        // navigate('/login')
 
         
 
@@ -120,7 +144,7 @@ export function Cadastro() {
                                             name="email"
                                             value={email}
                                             onChange={handleEmailChange}
-                                            isInvalid={!emailValido && formEnviado} 
+                                            isInvalid={!validateEmail(email) && formEnviado} 
                                         />
                                         <Form.Control.Feedback type="invalid">
                                             Por favor, insira um email válido.
@@ -151,7 +175,7 @@ export function Cadastro() {
                                             name="senha"
                                             value={senha}
                                             onChange={handleSenhaChange}
-                                            isInvalid={!senhaValida && formEnviado} 
+                                            isInvalid={!validateSenha(senha) && formEnviado} 
                                         />
                                         <Form.Control.Feedback type="invalid">
                                             Por favor, insira uma senha válida.
@@ -171,4 +195,4 @@ export function Cadastro() {
             </div>
         </div>
     );
-}
+}   
