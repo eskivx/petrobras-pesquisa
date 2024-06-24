@@ -59,11 +59,12 @@ export function Login() {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setServerResponse(data.message);
+                setServerResponse(data.mensagem);
                 setShow(true);
-                // if (data.success) {
-                //     navigate('/');
-                // }
+                if (data.success) {
+                    
+                    navigate('/');
+                }
             })
             .catch(err => console.log(err));
 
@@ -71,7 +72,7 @@ export function Login() {
 
 
 
-        limparFormulario();
+        
     };
 
     const validarCampos = () => {
@@ -90,11 +91,7 @@ export function Login() {
         return senha.length > 0;
     };
 
-    const limparFormulario = () => {
-        setEmail('');
-        setSenha('');
-        setFormEnviado(false);
-    };
+  
 
 
     return (

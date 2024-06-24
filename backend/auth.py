@@ -38,7 +38,7 @@ class Cadastro(Resource):
         db_user = Usuario.query.filter_by(email=email).first()
 
         if db_user is not None:
-            return make_response(jsonify({"mensagem": f"Este email {email} já está vinculado a uma conta"}), 400)
+            return make_response(jsonify({"mensagem": f"Este email: {email} já está vinculado a uma conta."}), 400)
 
         ehadmin = 0
         if email.endswith("@petrobras.com"):
@@ -55,7 +55,7 @@ class Cadastro(Resource):
         )
 
         new_user.save()
-        return make_response(jsonify({"Mensagem": "Usuário cadastrado com sucesso"}), 201)
+        return make_response(jsonify({"mensagem": "Usuário cadastrado com sucesso!"}), 201)
 
 
 @auth_ns.route('/cadastro/<string:email>')

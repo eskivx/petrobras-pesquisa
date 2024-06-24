@@ -4,7 +4,7 @@ import { Navbar } from '../../componentes/Navbar';
 import logo from '../../../../images/logo-petrobras.svg';
 import logo2 from '../../../../images/nome-petrobras.svg';
 import { Link, useNavigate } from 'react-router-dom';
-import { Form } from 'react-bootstrap';
+import { Form, FloatingLabel, Alert } from 'react-bootstrap';
 
 export function Cadastro() {
     const [cep, setCep] = useState('');
@@ -17,6 +17,7 @@ export function Cadastro() {
     const [formEnviado, setFormEnviado] = useState(false); // Estado para controlar se o formulário foi enviado
     const [show, setShow] = useState(false)
     const [serverResponse, setServerResponse] = useState('')
+    const [alertVariant, setAlertVariant] = useState('')
 
     useEffect(() => {
         window.handleCallback = (conteudo) => meuCallback(conteudo, setMensagem, setCepValido);
@@ -77,66 +78,87 @@ export function Cadastro() {
             body: JSON.stringify(formData)
         }
         fetch('http://localhost:5000/auth/cadastro', requestOptions)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setServerResponse(data.message);
+            .then(async res => {
+                const data = await res.json();
+                if (res.ok) {
+                    setServerResponse(data.mensagem);
+                    setAlertVariant('success');
+                    limparFormulario();
+                    // navigate('/login');
+                } else {
+                    setServerResponse(data.mensagem || 'Erro ao enviar');
+                    setAlertVariant('danger');
+                }
                 setShow(true);
-                // if (data.success) {
-                //     navigate('/login');
-                // }
             })
-            .catch(err => console.log(err));
-
-
-
-
-
-        limparFormulario();
+            .catch(err => {
+                console.error('erro', err);
+                setServerResponse('Erro ao enviar');
+                setAlertVariant('danger');
+                setShow(true);
+            });
     };
 
-    const validarCampos = () => {
 
-        setEmailValido(validateEmail(email));
-        setCepValido(validateCep(cep));
-        setSenhaValida(validateSenha(senha));
-    };
 
-    const validateEmail = (email) => {
 
-        return email.length > 0;
-    };
 
-    const validateCep = (cep) => {
 
-        return cep.length > 0;
-    };
 
-    const validateSenha = (senha) => {
 
-        return senha.length >= 6;
-    };
+const validarCampos = () => {
 
-    const limparFormulario = () => {
-        setEmail('');
-        setSenha('');
-        setCep('');
-        setFormEnviado(false);
-    };
+    setEmailValido(validateEmail(email));
+    setCepValido(validateCep(cep));
+    setSenhaValida(validateSenha(senha));
+};
 
-    return (
-        <div className="tudo">
-            <Navbar />
+const validateEmail = (email) => {
 
-            <div className="div-container gradient-background div-master">
-                <div className="main-div justified-center my-5 round-corner">
-                    <div className="container py-5" id="container-home">
-                        <div className="interior-cadastro">
+    return email.length > 0;
+};
+
+const validateCep = (cep) => {
+
+    return cep.length > 0;
+};
+
+const validateSenha = (senha) => {
+
+    return senha.length >= 6;
+};
+
+const limparFormulario = () => {
+    setEmail('');
+    setSenha('');
+    setCep('');
+    setFormEnviado(false);
+};
+
+return (
+    <div className="tudo">
+        <Navbar />
+
+        <div className="div-container gradient-background div-master">
+            <div className="main-div justified-center my-5 round-corner">
+                <div className="container py-5" id="container-home">
+                {show ?
+                            <>
+                                <Alert key={alertVariant} variant={alertVariant}>
+                                    <p>{serverResponse}</p>
+                                    {alertVariant === 'success' && <Alert.Link href="/login">Faça Login!</Alert.Link>}
+                                </Alert>
+                            </> :
                             <h1>Cadastro</h1>
-                            <form onSubmit={handleSubmit}>
-                                <div className="formulario">
-                                    <br></br>
-                                    <Form.Group>
+                        }
+
+                    <div className="interior-cadastro">
+                        
+
+                        <form onSubmit={handleSubmit}>
+                            <div className="formulario">
+                                <br></br>
+                                <Form.Group>
                                     <Form.Floating className="mb-3">
                                         <Form.Control
                                             id="floatEmail"
@@ -151,11 +173,11 @@ export function Cadastro() {
                                             Por favor, insira um email válido.
                                         </Form.Control.Feedback>
                                         <label htmlFor="floatingInputCustom">Email</label>
-                                        </Form.Floating>
-                                    </Form.Group>
-                                    
-                                    <Form.Group>
-                                        <Form.Floating>
+                                    </Form.Floating>
+                                </Form.Group>
+
+                                <Form.Group>
+                                    <Form.Floating>
                                         <Form.Control
                                             id="floatCep"
                                             type="text"
@@ -170,11 +192,11 @@ export function Cadastro() {
                                             Por favor, insira um CEP válido.
                                         </Form.Control.Feedback>
                                         <label htmlFor="floatCep">CEP  ex.: 88000-000</label>
-                                        </Form.Floating>
-                                    </Form.Group>
-                                    <br></br>
-                                    <Form.Group>
-                                        <Form.Floating>
+                                    </Form.Floating>
+                                </Form.Group>
+                                <br></br>
+                                <Form.Group>
+                                    <Form.Floating>
                                         <Form.Control
                                             id="floatSenha"
                                             type="password"
@@ -188,20 +210,21 @@ export function Cadastro() {
                                             Por favor, insira uma senha válida.
                                         </Form.Control.Feedback>
                                         <label htmlFor="floatSenha">Senha</label>
-                                        </Form.Floating>
-                                    </Form.Group>
-                                </div>
-                                <p id="rescep">{mensagem}</p>
-                                <input type="submit" className="btn btn-dark btn-lg my-5 col-6" value="Enviar" style={{ width: '100px' }} onClick={() => setFormEnviado(true)} />
-                                <Form.Group>
-                                    <small>Já possui conta?  <Link to="/login">Login</Link></small>
+                                    </Form.Floating>
                                 </Form.Group>
-                            </form>
+                            </div>
+                            <p id="rescep">{mensagem}</p>
+                            <input type="submit" className="btn btn-dark btn-lg my-5 col-6" value="Enviar" style={{ width: '100px' }} onClick={() => setFormEnviado(true)} />
+                            <Form.Group>
+                                <small>Já possui conta?  <Link to="/login">Login</Link></small>
+                            </Form.Group>
+                        </form>
 
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    );
-}   
+    </div>
+);
+ 
+}
