@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navbar } from '../../componentes/Navbar';
-import { Form, FloatingLabel } from 'react-bootstrap';
+import { Form, FloatingLabel, Alert } from 'react-bootstrap';
 import logo from '../../../../images/logo-petrobras.svg';
 import logo2 from '../../../../images/nome-petrobras.svg';
 
@@ -14,6 +14,7 @@ export function Login() {
     const [formEnviado, setFormEnviado] = useState(false); // Estado para controlar se o formulário foi enviado
     const [show, setShow] = useState(false)
     const [serverResponse, setServerResponse] = useState('')
+    const [alertVariant, setAlertVariant] = useState('')
 
 
     const handleEmailChange = (e) => {
@@ -56,24 +57,27 @@ export function Login() {
             body: JSON.stringify(formData)
         }
         fetch('http://localhost:5000/auth/login', requestOptions)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
+        .then(async res => {
+            const data = await res.json();
+            if (res.ok) {
                 setServerResponse(data.mensagem);
-                setShow(true);
-                if (data.success) {
-                    
-                    navigate('/');
-                }
-            })
-            .catch(err => console.log(err));
-
-
-
-
-
-        
-    };
+                setAlertVariant('success')
+                console.log(data);
+                
+                // navigate('/login');
+            } else {
+                setServerResponse(data.mensagem || 'Erro ao enviar');
+                setAlertVariant('danger');
+            }
+            setShow(true);
+        })
+        .catch(err => {
+            console.error('erro', err);
+            setServerResponse('Erro ao enviar');
+            setAlertVariant('danger');
+            setShow(true);
+        });
+};
 
     const validarCampos = () => {
 
@@ -101,8 +105,18 @@ export function Login() {
             <div className="div-container gradient-background div-master">
                 <div className="main-div justified-center my-5 round-corner">
                     <div className="container py-5" id="container-home">
-                        <div className="interior-cadastro">
+                    {show ?
+                            <>
+                                <Alert key={alertVariant} variant={alertVariant}>
+                                    <p>{serverResponse}</p>
+                                    {alertVariant === 'danger' && <Alert.Link href="/cadastro">Mude sua senha</Alert.Link>}
+                                    {alertVariant === 'success' && <Alert.Link href="/cadastro">Sucesso</Alert.Link>}
+                                </Alert>
+                            </> :
                             <h1>Login</h1>
+                        }
+                        <div className="interior-cadastro">
+                            
                             <form onSubmit={handleSubmit}>
                                 <div className="formulario">
                                     <br></br>
