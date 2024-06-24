@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { pesquisacep, meuCallback } from '../../../../backend/consulta cep';
+import { pesquisacep, meuCallback } from '../../consultacep';
 import { Navbar } from '../../componentes/Navbar';
 import logo from '../../../../images/logo-petrobras.svg';
 import logo2 from '../../../../images/nome-petrobras.svg';

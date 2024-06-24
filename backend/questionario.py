@@ -1,7 +1,8 @@
 from flask_restx import Namespace, Resource, fields
 from flask import Flask, request, jsonify
-from models import Questionario
+from models import Questionario, db
 from flask_jwt_extended import jwt_required
+from sqlalchemy import func
 
 
 
@@ -51,4 +52,138 @@ class QuestionarioResource(Resource):
             q10=data.get('q10')
         )
         new_questionario.save()
-        return  new_questionario
+        return  new_questionario, 201
+    
+
+
+#JESUS AMADO
+@questionario_ns.route('/questionario/q1')
+class MaisQ1Resource(Resource):
+    def get(self):
+        results = db.session.query(
+            Questionario.q1,
+            func.count(Questionario.q1).label('frequencia')
+        ).group_by(Questionario.q1).order_by(func.count(Questionario.q1).desc()).all()
+        
+        if results:
+            return jsonify([{'valor': result.q1, 'frequencia': result.frequencia} for result in results])
+        else:
+            return jsonify({'mensagem': 'nenhum dado encontrado'}), 404
+        
+@questionario_ns.route('/questionario/q2')
+class MaisQ2Resource(Resource):
+    def get(self):
+        results = db.session.query(
+            Questionario.q2,
+            func.count(Questionario.q2).label('frequencia')
+        ).group_by(Questionario.q2).order_by(func.count(Questionario.q2).desc()).all()
+        
+        if results:
+            return jsonify([{'valor': result.q2, 'frequencia': result.frequencia} for result in results])
+        else:
+            return jsonify({'mensagem': 'nenhum dado encontrado'}), 404
+        
+
+@questionario_ns.route('/questionario/q3')
+class MaisQ3Resource(Resource):
+    def get(self):
+        results = db.session.query(
+            Questionario.q3,
+            func.count(Questionario.q3).label('frequencia')
+        ).group_by(Questionario.q3).order_by(func.count(Questionario.q3).desc()).all()
+        
+        if results:
+            return jsonify([{'valor': result.q3, 'frequencia': result.frequencia} for result in results])
+        else:
+            return jsonify({'mensagem': 'nenhum dado encontrado'}), 404
+        
+@questionario_ns.route('/questionario/q4')
+class MaisQ4Resource(Resource):
+    def get(self):
+        results = db.session.query(
+            Questionario.q4,
+            func.count(Questionario.q4).label('frequencia')
+        ).group_by(Questionario.q4).order_by(func.count(Questionario.q4).desc()).all()
+        
+        if results:
+            return jsonify([{'valor': result.q4, 'frequencia': result.frequencia} for result in results])
+        else:
+            return jsonify({'mensagem': 'nenhum dado encontrado'}), 404
+
+@questionario_ns.route('/questionario/q5')
+class MaisQ5Resource(Resource):
+    def get(self):
+        results = db.session.query(
+            Questionario.q5,
+            func.count(Questionario.q5).label('frequencia')
+        ).group_by(Questionario.q5).order_by(func.count(Questionario.q5).desc()).all()
+        
+        if results:
+            return jsonify([{'valor': result.q5, 'frequencia': result.frequencia} for result in results])
+        else:
+            return jsonify({'mensagem': 'nenhum dado encontrado'}), 404
+
+@questionario_ns.route('/questionario/q6')
+class MaisQ6Resource(Resource):
+    def get(self):
+        results = db.session.query(
+            Questionario.q6,
+            func.count(Questionario.q6).label('frequencia')
+        ).group_by(Questionario.q6).order_by(func.count(Questionario.q6).desc()).all()
+        
+        if results:
+            return jsonify([{'valor': result.q6, 'frequencia': result.frequencia} for result in results])
+        else:
+            return jsonify({'mensagem': 'nenhum dado encontrado'}), 404
+        
+@questionario_ns.route('/questionario/q7')
+class MaisQ7Resource(Resource):
+    def get(self):
+        results = db.session.query(
+            Questionario.q7,
+            func.count(Questionario.q7).label('frequencia')
+        ).group_by(Questionario.q7).order_by(func.count(Questionario.q7).desc()).all()
+        
+        if results:
+            return jsonify([{'valor': result.q7, 'frequencia': result.frequencia} for result in results])
+        else:
+            return jsonify({'mensagem': 'nenhum dado encontrado'}), 404
+        
+@questionario_ns.route('/questionario/q8')
+class MaisQ8Resource(Resource):
+    def get(self):
+        results = db.session.query(
+            Questionario.q8,
+            func.count(Questionario.q8).label('frequencia')
+        ).group_by(Questionario.q8).order_by(func.count(Questionario.q8).desc()).all()
+        
+        if results:
+            return jsonify([{'valor': result.q8, 'frequencia': result.frequencia} for result in results])
+        else:
+            return jsonify({'mensagem': 'nenhum dado encontrado'}), 404
+        
+@questionario_ns.route('/questionario/q9')
+class MaisQ9Resource(Resource):
+    def get(self):
+        results = db.session.query(
+            Questionario.q9,
+            func.count(Questionario.q9).label('frequencia')
+        ).group_by(Questionario.q9).order_by(func.count(Questionario.q9).desc()).all()
+        
+        if results:
+            return jsonify([{'valor': result.q9, 'frequencia': result.frequencia} for result in results])
+        else:
+            return jsonify({'mensagem': 'nenhum dado encontrado'}), 404
+
+@questionario_ns.route('/questionario/q10')
+class MaisQ10Resource(Resource):
+    def get(self):
+        results = db.session.query(
+            Questionario.q10,
+            func.count(Questionario.q10).label('frequencia')
+        ).group_by(Questionario.q10).order_by(func.count(Questionario.q10).desc()).all()
+        
+        if results:
+            return jsonify([{'valor': result.q10, 'frequencia': result.frequencia} for result in results])
+        else:
+            return jsonify({'mensagem': 'nenhum dado encontrado'}), 404
