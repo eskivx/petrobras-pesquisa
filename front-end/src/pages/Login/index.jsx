@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navbar } from '../../componentes/Navbar';
-import { Form } from 'react-bootstrap';
+import { Form, FloatingLabel } from 'react-bootstrap';
 import logo from '../../../../images/logo-petrobras.svg';
 import logo2 from '../../../../images/nome-petrobras.svg';
+
 
 export function Login() {
     const [email, setEmail] = useState('');
@@ -109,10 +110,12 @@ export function Login() {
                                 <div className="formulario">
                                     <br></br>
                                     <Form.Group>
-                                        <Form.Label>Email</Form.Label>
+                                    <Form.Floating className="mb-3">
+      
                                         <Form.Control
-                                            type="text"
-                                            placeholder="ex.: fulano@email.com"
+                                            id="floatEmail"
+                                            type="email"
+                                            placeholder="email"
                                             name="email"
                                             value={email}
                                             onChange={handleEmailChange}
@@ -121,13 +124,16 @@ export function Login() {
                                         <Form.Control.Feedback type="invalid">
                                             Por favor, insira um email válido.
                                         </Form.Control.Feedback>
+                                        <label htmlFor="floatEmail">Email</label>
+                                        </Form.Floating>
                                     </Form.Group>
                                     <br></br>
                                     <Form.Group>
-                                        <Form.Label>Senha</Form.Label>
+                                        <Form.Floating>
                                         <Form.Control
+                                            id="floatSenha"
                                             type="password"
-                                            placeholder="Sua senha"
+                                            placeholder="senha"
                                             name="senha"
                                             value={senha}
                                             onChange={handleSenhaChange}
@@ -136,6 +142,8 @@ export function Login() {
                                         <Form.Control.Feedback type="invalid">
                                             Por favor, insira uma senha válida.
                                         </Form.Control.Feedback>
+                                        <label htmlFor="floatSenha">Senha</label>
+                                        </Form.Floating>
                                     </Form.Group>
                                 </div>
                                 <input
