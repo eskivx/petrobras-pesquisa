@@ -136,7 +136,7 @@ const limparFormulario = () => {
 };
 
 return (
-    <div className="tudo">
+    <div className="tudo div-master">
         <Navbar />
 
         <div className="div-container gradient-background div-master">
