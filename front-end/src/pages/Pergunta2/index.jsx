@@ -17,6 +17,7 @@ export function Pergunta2() {
                 <div className="main-div justified-center my-5 round-corner">
                     <div className="container" id="container-home">
                         <h1 className="my-4" id="h1-home">Pesquisa</h1>
+                        <form>
                         <p>Qual sua escolaridade?</p>
                         <div>
                             <input type="radio" id="vermelho" name="cor" value="vermelho" />
@@ -42,6 +43,7 @@ export function Pergunta2() {
                         <Link to="/pesquisa"><button className="btn btn-outline-secondary btn-lg my-5 col-6" type="button">Voltar</button></Link>
                         <Link to="/pergunta3"><button className="btn btn-dark btn-lg my-5 col-6" type="button">Responder</button></Link>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
