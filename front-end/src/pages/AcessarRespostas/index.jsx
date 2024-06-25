@@ -6,7 +6,7 @@ import logo2 from '../../../../images/nome-petrobras.svg';
 import { Navbar } from '../../componentes/Navbar'
 import '../../index.css'
 import { useAuth } from '../../auth';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, BarChart, Bar } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, BarChart, Bar, PieChart, ResponsiveContainer, Pie } from 'recharts';
 
 
 
@@ -45,7 +45,7 @@ const LoggedInAcessar = () => {
                     setRespostas3(data)
                 })
                 .catch(err => console.log(err))
-                fetch('http://localhost:5000/questionario/questionario/q4')
+            fetch('http://localhost:5000/questionario/questionario/q4')
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
@@ -66,7 +66,7 @@ const LoggedInAcessar = () => {
                     setRespostas6(data)
                 })
                 .catch(err => console.log(err))
-                fetch('http://localhost:5000/questionario/questionario/q7')
+            fetch('http://localhost:5000/questionario/questionario/q7')
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
@@ -96,6 +96,10 @@ const LoggedInAcessar = () => {
                 .catch(err => console.log(err))
         },
         []
+
+
+
+
     );
     return (
         <div className="tudo div-master">
@@ -108,74 +112,75 @@ const LoggedInAcessar = () => {
                         <div className="graficos">
                             <h1>Pergunta 1</h1>
                             <BarChart width={300} height={150} data={respostas}>
-                                <XAxis dataKey="frequencia"  />
+                                <XAxis dataKey="valor" />
                                 <YAxis />
-                                <Bar dataKey="valor" barSize={30} fill="#8884d8"
+                                <Bar dataKey="frequencia" barSize={30} fill="#8884d8"
                                     label={"teste"} />
                             </BarChart>
-                            <h1>Pergunta 2</h1>                
+                            <h1>Pergunta 2</h1>
                             <BarChart width={300} height={150} data={respostas2}>
-                                <XAxis dataKey="frequencia"  />
+                                <XAxis dataKey="valor" />
                                 <YAxis />
-                                <Bar dataKey="valor" barSize={30} fill="#8884d8"
+                                <Bar dataKey="frequencia" barSize={30} fill="#8884d8"
                                     label={"teste"} />
                             </BarChart>
                             <h1>Pergunta 3</h1>
                             <BarChart width={300} height={150} data={respostas3}>
-                                <XAxis dataKey="frequencia"  />
+                                <XAxis dataKey="valor" />
                                 <YAxis />
-                                <Bar dataKey="valor" barSize={30} fill="#8884d8"
+                                <Bar dataKey="frequencia" barSize={30} fill="#8884d8"
                                     label={"teste"} />
                             </BarChart>
-                            <h1>Pergunta 4</h1>                
+                            <h1>Pergunta 4</h1>
                             <BarChart width={300} height={150} data={respostas4}>
-                                <XAxis dataKey="frequencia"  />
+                                <XAxis dataKey="valor" />
                                 <YAxis />
-                                <Bar dataKey="valor" barSize={30} fill="#8884d8"
+                                <Bar dataKey="frequencia" barSize={30} fill="#8884d8"
                                     label={"teste"} />
                             </BarChart>
                             <h1>Pergunta 5</h1>
                             <BarChart width={300} height={150} data={respostas5}>
-                                <XAxis dataKey="frequencia"  />
+                                <XAxis dataKey="valor" />
                                 <YAxis />
-                                <Bar dataKey="valor" barSize={30} fill="#8884d8"
+                                <Bar dataKey="frequencia" barSize={30} fill="#8884d8"
                                     label={"teste"} />
                             </BarChart>
-                            <h1>Pergunta 6</h1>                
+                            <h1>Pergunta 6</h1>
                             <BarChart width={300} height={150} data={respostas6}>
-                                <XAxis dataKey="frequencia"  />
+                                <XAxis dataKey="valor" />
                                 <YAxis />
-                                <Bar dataKey="valor" barSize={30} fill="#8884d8"
+                                <Bar dataKey="frequencia" barSize={30} fill="#8884d8"
                                     label={"teste"} />
                             </BarChart>
                             <h1>Pergunta 7</h1>
                             <BarChart width={300} height={150} data={respostas7}>
-                                <XAxis dataKey="frequencia"  />
+                                <XAxis dataKey="valor" />
                                 <YAxis />
-                                <Bar dataKey="valor" barSize={30} fill="#8884d8"
+                                <Bar dataKey="frequencia" barSize={30} fill="#8884d8"
                                     label={"teste"} />
                             </BarChart>
-                            <h1>Pergunta 8</h1>                
+                            <h1>Pergunta 8</h1>
                             <BarChart width={300} height={150} data={respostas8}>
-                                <XAxis dataKey="frequencia"  />
+                                <XAxis dataKey="valor" />
                                 <YAxis />
-                                <Bar dataKey="valor" barSize={30} fill="#8884d8"
+                                <Bar dataKey="frequencia" barSize={30} fill="#8884d8"
                                     label={"teste"} />
                             </BarChart>
                             <h1>Pergunta 9</h1>
                             <BarChart width={300} height={150} data={respostas9}>
-                                <XAxis dataKey="frequencia"  />
+                                <XAxis dataKey="valor" />
                                 <YAxis />
-                                <Bar dataKey="valor" barSize={30} fill="#8884d8"
+                                <Bar dataKey="frequencia" barSize={30} fill="#8884d8"
                                     label={"teste"} />
                             </BarChart>
-                            <h1>Pergunta 10</h1>                
+                            <h1>Pergunta 10</h1>
                             <BarChart width={300} height={150} data={respostas10}>
-                                <XAxis dataKey="frequencia"  />
+                                <XAxis dataKey="valor" />
                                 <YAxis />
-                                <Bar dataKey="valor" barSize={30} fill="#8884d8"
+                                <Bar dataKey="frequencia" barSize={30} fill="#8884d8"
                                     label={"teste"} />
                             </BarChart>
+                            
                         </div>
 
 
