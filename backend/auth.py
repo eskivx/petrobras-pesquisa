@@ -58,6 +58,24 @@ class Cadastro(Resource):
         return make_response(jsonify({"mensagem": "Usuário cadastrado com sucesso!"}), 201)
 
 
+@auth_ns.route('/check/<string:email>')
+class ChecarFlags(Resource):
+    def get(self, email):
+        user = Usuario.query.filter_by(email=email).first()
+
+        if user is None:
+            return make_response(jsonify({"mensagem": f"Usuário com email: {email} não encontrado."}), 404)
+
+        user_data = {
+            "email": user.email,
+            "respondeu": user.respondeu,
+            "cepvalido": user.cepvalido,
+            "ehadmin": user.ehadmin
+        }
+
+        return make_response(jsonify(user_data), 200)
+
+
 @auth_ns.route('/cadastro/<string:email>')
 class CadastroAlterar(Resource):
     @auth_ns.expect(cadastro_model)
