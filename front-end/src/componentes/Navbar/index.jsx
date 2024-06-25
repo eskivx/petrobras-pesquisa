@@ -5,14 +5,18 @@ import logo from '../../../../images/logo-petrobras.svg';
 import logo2 from '../../../../images/nome-petrobras.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import { useAuth, logout } from '../../auth';
+import { useAuth, logout, login, getUserEmail } from '../../auth';
 
 
 
 
 const LoggedInLinks = () => {
+    const email = getUserEmail();
     return (
         <>
+            <li className="nav-item px-2">
+                <Link className="nav-link" aria-current="page" to="/">{email}</Link>
+            </li>
             <li className="nav-item px-2">
                 <Link className="nav-link" to="/" onClick={logout}>SAIR</Link>
             </li>

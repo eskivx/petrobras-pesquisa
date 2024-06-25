@@ -65,8 +65,8 @@ export function Login() {
             if (res.ok) {
                 setServerResponse(data.mensagem);
                 setAlertVariant('success');
-                login(data.access_token);
-                console.log(data.access_token);
+                login(data.access_token, data.refresh_token, email); // chamando a função login do auth.js
+                console.log(data.access_token, email);
                 navigate('/');
             } else {
                 setServerResponse(data.mensagem || 'Erro ao enviar');
