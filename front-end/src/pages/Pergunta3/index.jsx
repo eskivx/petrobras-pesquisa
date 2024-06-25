@@ -16,6 +16,7 @@ export function Pergunta3() {
                     <div className="container" id="container-home">
                         <h1 className="my-4" id="h1-home">Pesquisa</h1>
                         <p>O quão perto você mora de um projeto da Petrobras?</p>
+                        <form>
                         <div>
                             <input type="radio" id="vermelho" name="cor" value="vermelho" />
                             <label htmlFor="vermelho">Muito perto</label><br />
@@ -39,7 +40,9 @@ export function Pergunta3() {
                         <div className='width100'>
                         <Link to="/pergunta2"><button className="btn btn-outline-secondary btn-lg my-5 col-6" type="button">Voltar</button></Link>
                         <Link to="/pergunta4"><button className="btn btn-dark btn-lg my-5 col-6" type="button">Responder</button></Link>
-                        </div></div>
+                        </div>
+                        </form>
+                        </div>
                 </div>
             </div>
             </>
