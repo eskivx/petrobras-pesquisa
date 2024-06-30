@@ -111,11 +111,28 @@ const LoggedOutAcessar = () => {
 
   )
 };
+const AcessarAdmin = () => {
+  return (
+      <div className="tudo div-master">
+          <div className="div-container gradient-background div-master">
+              <div className="main-div justified-center my-5 round-corner">
+                  <div className="container" id="container-home">
+                      <h1 className="my-4" id="h1-home">Você é admininstrador e não pode responder o questionário</h1>
+                      <Link to="/acessarrespostas">Acessar respostas</Link>
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  )
+};
 
 export function Questionario() {
 
   const [logged] = useAuth();
   const [respondeu, setRespondeu] = useState(null);
+  const [ehadmin, setEhadmin] = useState(false);
 
   useEffect(() => {
       if (logged) {
@@ -124,6 +141,9 @@ export function Questionario() {
               .then(data => {
                   if (data.respondeu !== undefined) {
                       setRespondeu(data.respondeu);
+                  }
+                  if (data.ehadmin!== undefined) {
+                    setEhadmin(data.ehadmin);
                   }
               })
               .catch(err => console.log(err));
@@ -135,7 +155,7 @@ export function Questionario() {
 
           <Navbar />
 
-          {respondeu === false ? <LoggedInAcessar /> : <LoggedOutAcessar />}
+          {ehadmin ? <AcessarAdmin /> : (respondeu === false ? <LoggedInAcessar /> : <LoggedOutAcessar />)}
 
 
       </>
