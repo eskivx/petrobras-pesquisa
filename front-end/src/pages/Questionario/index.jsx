@@ -78,13 +78,11 @@ export function LoggedInAcessar () {
     const data = await res.json();
     if (res.ok) {
         fetch(`http://localhost:5000/auth/cadastro/${email}`, requestOptions2)
-        setLoading(true)
+        setLoading(true);
         await sleep(1400);
         window.location.reload();
         
-    } else {
-        
-    }
+    } 
     
   })
   .then(data=>console.log(data))
@@ -110,7 +108,7 @@ export function LoggedInAcessar () {
                 {currentPage < questions.length - 1 && <button onClick={nextPage}>Próxima</button>}
                 {currentPage === questions.length - 1 && <button onClick={handleSubmit}>Enviar</button>}
                 <br></br>
-                {loading && <Loading/ >}
+                {loading && <Loading/>}
               </div>
             </div>
           </div>

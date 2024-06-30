@@ -33,70 +33,70 @@ useEffect(
         fetch('http://localhost:5000/questionario/questionario/q1')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                
                 setRespostas(data)
             })
             .catch(err => console.log(err))
         fetch('http://localhost:5000/questionario/questionario/q2')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                
                 setRespostas2(data)
             })
             .catch(err => console.log(err))
         fetch('http://localhost:5000/questionario/questionario/q3')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                
                 setRespostas3(data)
             })
             .catch(err => console.log(err))
         fetch('http://localhost:5000/questionario/questionario/q4')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                
                 setRespostas4(data)
             })
             .catch(err => console.log(err))
         fetch('http://localhost:5000/questionario/questionario/q5')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                
                 setRespostas5(data)
             })
             .catch(err => console.log(err))
         fetch('http://localhost:5000/questionario/questionario/q6')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                
                 setRespostas6(data)
             })
             .catch(err => console.log(err))
         fetch('http://localhost:5000/questionario/questionario/q7')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                
                 setRespostas7(data)
             })
             .catch(err => console.log(err))
         fetch('http://localhost:5000/questionario/questionario/q8')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                
                 setRespostas8(data)
             })
             .catch(err => console.log(err))
         fetch('http://localhost:5000/questionario/questionario/q9')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                
                 setRespostas9(data)
             })
             .catch(err => console.log(err))
         fetch('http://localhost:5000/questionario/questionario/q10')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+            
                 setRespostas10(data)
             })
             .catch(err => console.log(err))
