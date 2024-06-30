@@ -20,16 +20,16 @@ class Usuario(db.Model):
 
 class Questionario(db.Model):
     id=db.Column(db.Integer(),primary_key=True)
-    q1=db.Column(db.Integer(),nullable=False)
-    q2=db.Column(db.Integer(),nullable=False)
-    q3=db.Column(db.Integer(),nullable=False)
-    q4=db.Column(db.Integer(),nullable=False)
-    q5=db.Column(db.Integer(),nullable=False)
-    q6=db.Column(db.Integer(),nullable=False)
-    q7=db.Column(db.Integer(),nullable=False)
-    q8=db.Column(db.Integer(),nullable=False)
-    q9=db.Column(db.Integer(),nullable=False)
-    q10=db.Column(db.Integer(),nullable=False)
+    q1=db.Column(db.Text())
+    q2=db.Column(db.Text())
+    q3=db.Column(db.Text())
+    q4=db.Column(db.Text())
+    q5=db.Column(db.Text())
+    q6=db.Column(db.Text())
+    q7=db.Column(db.Text())
+    q8=db.Column(db.Text())
+    q9=db.Column(db.Text())
+    q10=db.Column(db.Text())
 
     def __repr__(self):
         return f"<id do questionário{self.id}>"

@@ -11,16 +11,16 @@ questionario_ns=Namespace('questionario', description="um namespace para questio
 questionario_model=questionario_ns.model(
     "Questionario",
     {
-        "q1":fields.Integer(),
-        "q2":fields.Integer(),
-        "q3":fields.Integer(),
-        "q4":fields.Integer(),
-        "q5":fields.Integer(),
-        "q6":fields.Integer(),
-        "q7":fields.Integer(),
-        "q8":fields.Integer(),
-        "q9":fields.Integer(),
-        "q10":fields.Integer()
+        "q1":fields.String(),
+        "q2":fields.String(),
+        "q3":fields.String(),
+        "q4":fields.String(),
+        "q5":fields.String(),
+        "q6":fields.String(),
+        "q7":fields.String(),
+        "q8":fields.String(),
+        "q9":fields.String(),
+        "q10":fields.String()
     }
 )
 
