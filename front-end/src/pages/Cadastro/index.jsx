@@ -106,43 +106,43 @@ export function Cadastro() {
 
 
 
-const validarCampos = () => {
+    const validarCampos = () => {
 
-    setEmailValido(validateEmail(email));
-    setCepValido(validateCep(cep));
-    setSenhaValida(validateSenha(senha));
-};
+        setEmailValido(validateEmail(email));
+        setCepValido(validateCep(cep));
+        setSenhaValida(validateSenha(senha));
+    };
 
-const validateEmail = (email) => {
+    const validateEmail = (email) => {
 
-    return email.length > 0;
-};
+        return email.length > 0;
+    };
 
-const validateCep = (cep) => {
+    const validateCep = (cep) => {
 
-    return cep.length > 0;
-};
+        return cep.length > 0;
+    };
 
-const validateSenha = (senha) => {
+    const validateSenha = (senha) => {
 
-    return senha.length >= 6;
-};
+        return senha.length >= 6;
+    };
 
-const limparFormulario = () => {
-    setEmail('');
-    setSenha('');
-    setCep('');
-    setFormEnviado(false);
-};
+    const limparFormulario = () => {
+        setEmail('');
+        setSenha('');
+        setCep('');
+        setFormEnviado(false);
+    };
 
-return (
-    <div className="tudo div-master">
-        <Navbar />
+    return (
+        <div className="tudo div-master">
+            <Navbar />
 
-        <div className="div-container gradient-background div-master">
-            <div className="main-div justified-center my-5 round-corner">
-                <div className="container py-5" id="container-home">
-                {show ?
+            <div className="div-container gradient-background div-master">
+                <div className="main-div justified-center my-5 round-corner">
+                    <div className="container py-5" id="container-home">
+                        {show ?
                             <>
                                 <Alert key={alertVariant} variant={alertVariant}>
                                     <p>{serverResponse}</p>
@@ -152,79 +152,79 @@ return (
                             <h1>Cadastro</h1>
                         }
 
-                    <div className="interior-cadastro">
-                        
+                        <div className="interior-cadastro">
 
-                        <form onSubmit={handleSubmit}>
-                            <div className="formulario">
-                                <br></br>
-                                <Form.Group>
-                                    <Form.Floating className="mb-3">
-                                        <Form.Control
-                                            id="floatEmail"
-                                            type="email"
-                                            placeholder="e-mail"
-                                            name="email"
-                                            value={email}
-                                            onChange={handleEmailChange}
-                                            isInvalid={!validateEmail(email) && formEnviado}
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Por favor, insira um email válido.
-                                        </Form.Control.Feedback>
-                                        <label htmlFor="floatingInputCustom">Email</label>
-                                    </Form.Floating>
-                                </Form.Group>
 
-                                <Form.Group>
-                                    <Form.Floating>
-                                        <Form.Control
-                                            id="floatCep"
-                                            type="text"
-                                            placeholder="ex.: 88000-000"
-                                            name="cep"
-                                            value={cep}
-                                            onChange={handleCepChange}
-                                            onBlur={handleCepBlur}
-                                            isInvalid={!cepValido && formEnviado}
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Por favor, insira um CEP válido.
-                                        </Form.Control.Feedback>
-                                        <label htmlFor="floatCep">CEP  ex.: 88000-000</label>
-                                    </Form.Floating>
-                                </Form.Group>
-                                <br></br>
-                                <Form.Group>
-                                    <Form.Floating>
-                                        <Form.Control
-                                            id="floatSenha"
-                                            type="password"
-                                            placeholder="Sua senha"
-                                            name="senha"
-                                            value={senha}
-                                            onChange={handleSenhaChange}
-                                            isInvalid={!validateSenha(senha) && formEnviado}
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Por favor, insira uma senha válida.
-                                        </Form.Control.Feedback>
-                                        <label htmlFor="floatSenha">Senha</label>
-                                    </Form.Floating>
-                                </Form.Group>
-                            </div>
-                            <p id="rescep">{mensagem}</p>
-                            <input type="submit" className="btn btn-dark btn-lg my-5 col-6" value="Enviar" style={{ width: '100px' }} onClick={() => setFormEnviado(true)} />
-                            <Form.Group>
-                                <small>Já possui conta?  <Link to="/login">Login</Link></small>
-                            </Form.Group>
-                        </form>
+                            <form onSubmit={handleSubmit}>
+                                <div className="formulario">
+                                    <br></br>
+                                    <Form.Group>
+                                        <Form.Floating className="mb-3">
+                                            <Form.Control
+                                                id="floatEmail"
+                                                type="email"
+                                                placeholder="e-mail"
+                                                name="email"
+                                                value={email}
+                                                onChange={handleEmailChange}
+                                                isInvalid={!validateEmail(email) && formEnviado}
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                Por favor, insira um email válido.
+                                            </Form.Control.Feedback>
+                                            <label htmlFor="floatingInputCustom">Email</label>
+                                        </Form.Floating>
+                                    </Form.Group>
 
+                                    <Form.Group>
+                                        <Form.Floating>
+                                            <Form.Control
+                                                id="floatCep"
+                                                type="text"
+                                                placeholder="ex.: 88000-000"
+                                                name="cep"
+                                                value={cep}
+                                                onChange={handleCepChange}
+                                                onBlur={handleCepBlur}
+                                                isInvalid={!cepValido && formEnviado}
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                Por favor, insira um CEP válido.
+                                            </Form.Control.Feedback>
+                                            <label htmlFor="floatCep">CEP  ex.: 88000-000</label>
+                                        </Form.Floating>
+                                    </Form.Group>
+                                    <br></br>
+                                    <Form.Group>
+                                        <Form.Floating>
+                                            <Form.Control
+                                                id="floatSenha"
+                                                type="password"
+                                                placeholder="Sua senha"
+                                                name="senha"
+                                                value={senha}
+                                                onChange={handleSenhaChange}
+                                                isInvalid={!validateSenha(senha) && formEnviado}
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                Por favor, insira uma senha válida.
+                                            </Form.Control.Feedback>
+                                            <label htmlFor="floatSenha">Senha</label>
+                                        </Form.Floating>
+                                    </Form.Group>
+                                </div>
+                                <p id="rescep">{mensagem}</p>
+                                <input type="submit" className="btn btn-dark btn-lg my-5 col-6" value="Enviar" style={{ width: '100px' }} onClick={() => setFormEnviado(true)} />
+                                <Form.Group>
+                                    <small>Já possui conta?  <Link to="/login">Login</Link></small>
+                                </Form.Group>
+                            </form>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-);
- 
+    );
+
 }

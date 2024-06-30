@@ -37,7 +37,7 @@ export function Login() {
         setFormEnviado(true);
         const emailValido = validateEmail(email);
         const senhaValida = validateSenha(senha);
-        
+
 
         validarCampos();
 
@@ -48,7 +48,7 @@ export function Login() {
         const formData = {
             email: email,
             senha: senha
-            
+
         };
 
 
@@ -60,27 +60,26 @@ export function Login() {
             body: JSON.stringify(formData)
         }
         fetch('http://localhost:5000/auth/login', requestOptions)
-        .then(async res => {
-            const data = await res.json();
-            if (res.ok) {
-                setServerResponse(data.mensagem);
-                setAlertVariant('success');
-                login(data.access_token, data.refresh_token, email); // chamando a função login do auth.js
-                console.log(data.access_token, email);
-                navigate('/');
-            } else {
-                setServerResponse(data.mensagem || 'Erro ao enviar');
+            .then(async res => {
+                const data = await res.json();
+                if (res.ok) {
+                    setServerResponse(data.mensagem);
+                    setAlertVariant('success');
+                    login(data.access_token, data.refresh_token, email); // chamando a função login do auth.js                
+                    navigate('/');
+                } else {
+                    setServerResponse(data.mensagem || 'Erro ao enviar');
+                    setAlertVariant('danger');
+                }
+                setShow(true);
+            })
+            .catch(err => {
+                console.error('erro', err);
+                setServerResponse('Erro ao enviar');
                 setAlertVariant('danger');
-            }
-            setShow(true);
-        })
-        .catch(err => {
-            console.error('erro', err);
-            setServerResponse('Erro ao enviar');
-            setAlertVariant('danger');
-            setShow(true);
-        });
-};
+                setShow(true);
+            });
+    };
 
     const validarCampos = () => {
 
@@ -98,7 +97,7 @@ export function Login() {
         return senha.length > 0;
     };
 
-  
+
 
 
     return (
@@ -108,61 +107,61 @@ export function Login() {
             <div className="div-container gradient-background div-master">
                 <div className="main-div justified-center my-5 round-corner">
                     <div className="container py-5" id="container-home">
-                    {show ?
+                        {show ?
                             <>
                                 <Alert key={alertVariant} variant={alertVariant}>
                                     <p>{serverResponse}</p>
                                     {alertVariant === 'danger' && (
-            <>
-                <Alert.Link href="/cadastro">Mude sua senha</Alert.Link>
-                {' ou '}
-                <Alert.Link href="/cadastro">crie uma conta</Alert.Link>
-            </>
-        )}
+                                        <>
+                                            <Alert.Link href="/cadastro">Mude sua senha</Alert.Link>
+                                            {' ou '}
+                                            <Alert.Link href="/cadastro">crie uma conta</Alert.Link>
+                                        </>
+                                    )}
                                     {alertVariant === 'success' && <Alert.Link href="/cadastro">Sucesso</Alert.Link>}
                                 </Alert>
                             </> :
                             <h1>Login</h1>
                         }
                         <div className="interior-cadastro">
-                            
+
                             <form onSubmit={handleSubmit}>
                                 <div className="formulario">
                                     <br></br>
                                     <Form.Group>
-                                    <Form.Floating className="mb-3">
-      
-                                        <Form.Control
-                                            id="floatEmail"
-                                            type="email"
-                                            placeholder="email"
-                                            name="email"
-                                            value={email}
-                                            onChange={handleEmailChange}
-                                            isInvalid={!validateEmail(email) && formEnviado}
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Por favor, insira um email.
-                                        </Form.Control.Feedback>
-                                        <label htmlFor="floatEmail">Email</label>
+                                        <Form.Floating className="mb-3">
+
+                                            <Form.Control
+                                                id="floatEmail"
+                                                type="email"
+                                                placeholder="email"
+                                                name="email"
+                                                value={email}
+                                                onChange={handleEmailChange}
+                                                isInvalid={!validateEmail(email) && formEnviado}
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                Por favor, insira um email.
+                                            </Form.Control.Feedback>
+                                            <label htmlFor="floatEmail">Email</label>
                                         </Form.Floating>
                                     </Form.Group>
                                     <br></br>
                                     <Form.Group>
                                         <Form.Floating>
-                                        <Form.Control
-                                            id="floatSenha"
-                                            type="password"
-                                            placeholder="senha"
-                                            name="senha"
-                                            value={senha}
-                                            onChange={handleSenhaChange}
-                                            isInvalid={!validateSenha(senha) && formEnviado}
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Por favor, insira uma senha.
-                                        </Form.Control.Feedback>
-                                        <label htmlFor="floatSenha">Senha</label>
+                                            <Form.Control
+                                                id="floatSenha"
+                                                type="password"
+                                                placeholder="senha"
+                                                name="senha"
+                                                value={senha}
+                                                onChange={handleSenhaChange}
+                                                isInvalid={!validateSenha(senha) && formEnviado}
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                Por favor, insira uma senha.
+                                            </Form.Control.Feedback>
+                                            <label htmlFor="floatSenha">Senha</label>
                                         </Form.Floating>
                                     </Form.Group>
                                 </div>

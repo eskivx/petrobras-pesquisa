@@ -94,7 +94,7 @@ export function LoggedInAcessar () {
   };
 
   return (
-    <div>
+    
       <div className="tudo div-master">
         <div className="div-container gradient-background div-master">
           <div className="main-div justified-center my-5 round-corner">
@@ -116,7 +116,7 @@ export function LoggedInAcessar () {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };
 
