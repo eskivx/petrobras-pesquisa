@@ -53,6 +53,7 @@ export function LoggedInAcessar () {
       },
       body: JSON.stringify(answers)
   }
+  console.log(answers)
   fetch('http://localhost:5000/questionario/questionario', requestOptions)
   .then(async res => {
     const data = await res.json();
