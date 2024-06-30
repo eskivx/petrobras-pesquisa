@@ -17,6 +17,7 @@ import { Pergunta8 } from '../pages/Pergunta8'
 import { Pergunta9 } from '../pages/Pergunta9'
 import { Pergunta10 } from '../pages/Pergunta10'
 import { AcessarRespostas} from '../pages/AcessarRespostas'
+import { Questionario } from '../pages/Questionario'
 
 
 
@@ -41,6 +42,7 @@ export function AuthRoutes() {
      <Route path='/pergunta9' element={<Pergunta9/>}/>
      <Route path='/pergunta10' element={<Pergunta10/>}/>
      <Route path='/acessarrespostas' element={<AcessarRespostas/>}/>
+     <Route path='/questionario' element={<Questionario/>} />
    </Routes>
  )
 }

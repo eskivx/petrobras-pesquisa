@@ -21,7 +21,7 @@ const LoggedInLinks = () => {
                 <Link className="nav-link" to="/" onClick={logout}>SAIR</Link>
             </li>
             <li className="nav-item px-2">
-                <Link className="nav-link" to="/pesquisa">PESQUISA</Link>
+                <Link className="nav-link" to="/questionario">PESQUISA</Link>
             </li>
             <li className="nav-item px-2">
                 <Link className="nav-link" aria-current="page" to="/">HOME</Link>

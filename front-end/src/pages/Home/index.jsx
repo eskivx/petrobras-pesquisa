@@ -20,7 +20,7 @@ const LoggedInHome=()=>{
             <h2 className="my-4">Ajude sua comunidade!</h2>
             <p className="my-4 paragrafo-home">Queremos saber mais sobre os moradores ao redor dos projetos da Petrobras.</p>
             <p className="my-4 paragrafo-home">Responda as perguntas e contribua para a sua comunidade!</p>
-            <Link to="/pesquisa"><button className="btn btn-dark btn-lg my-5 col-6" style={{ width: '150px' }} type="button">Responder</button></Link>
+            <Link to="/questionario"><button className="btn btn-dark btn-lg my-5 col-6" style={{ width: '150px' }} type="button">Responder</button></Link>
           </div>
         </div>
       </div>
