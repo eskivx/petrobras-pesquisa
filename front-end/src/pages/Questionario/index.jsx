@@ -3,6 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import QuestionPage from '../../componentes/QuestionPage';
 import { Navbar } from '../../componentes/Navbar';
 import { useAuth,login,getUserEmail } from '../../auth';
+import { Spinner } from 'react-bootstrap';
+import Loading from '../../componentes/Loading';
 
 
 const questions = [
@@ -17,11 +19,20 @@ const questions = [
   { id: 'q9', question: 'Pergunta 9', p: 'Você acha que a Petrobras e seu projeto são bem-vindos na região?', alt1: 'Muito', alt2: 'Pouco', alt3: 'Muito Pouco', alt4: 'Neutro', alt5: 'Não' },
   { id: 'q10', question: 'Pergunta 10', p: 'A qualidade de vida melhorou com o começo do projeto?', alt1: 'Muito', alt2: 'Pouco', alt3: 'Muito Pouco', alt4: 'Neutro', alt5: 'Não' }
 ];
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
 
 export function LoggedInAcessar () {
   const [currentPage, setCurrentPage] = useState(0);
   const [answers, setAnswers] = useState({ q1: '', q2: '', q3: '', q4: '', q5: '', q6: '', q7: '', q8: '', q9: '', q10: '' });
   const navigate = useNavigate();
+  const email = getUserEmail();
+  const [loading, setLoading] = useState(false);
+  const respondeuTrue = {
+    respondeu: true
+    
+};
 
   const handleAnswerChange = (id, answer) => {
     setAnswers({ ...answers, [id]: answer });
@@ -52,19 +63,30 @@ export function LoggedInAcessar () {
           'Authorization': `Bearer ${accessToken}`
       },
       body: JSON.stringify(answers)
-  }
+      
+  };
+  const requestOptions2 = {
+    method: "PUT",
+    headers: {
+        'content-type': 'application/json',
+    },
+    body: JSON.stringify(respondeuTrue)
+  };
   console.log(answers)
   fetch('http://localhost:5000/questionario/questionario', requestOptions)
   .then(async res => {
     const data = await res.json();
     if (res.ok) {
+        fetch(`http://localhost:5000/auth/cadastro/${email}`, requestOptions2)
+        setLoading(true)
+        await sleep(1400);
+        window.location.reload();
         
-        navigate('/');
     } else {
         
     }
     
-})
+  })
   .then(data=>console.log(data))
   .catch(err =>console.log(err))
 
@@ -81,11 +103,14 @@ export function LoggedInAcessar () {
                 question={questions[currentPage]}
                 answer={answers[questions[currentPage].id]}
                 onAnswerChange={handleAnswerChange}
+                
               />
               <div>
                 {currentPage > 0 && <button onClick={prevPage}>Anterior</button>}
                 {currentPage < questions.length - 1 && <button onClick={nextPage}>Próxima</button>}
                 {currentPage === questions.length - 1 && <button onClick={handleSubmit}>Enviar</button>}
+                <br></br>
+                {loading && <Loading/ >}
               </div>
             </div>
           </div>
@@ -128,6 +153,22 @@ const AcessarAdmin = () => {
 
   )
 };
+const Respondido = () => {
+  return (
+      <div className="tudo div-master">
+          <div className="div-container gradient-background div-master">
+              <div className="main-div justified-center my-5 round-corner">
+                  <div className="container" id="container-home">
+                      <h1 className="my-4" id="h1-home">Obrigado por responder o questionario!</h1>
+                      <Link to="/">Home</Link>
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  )
+};
 
 export function Questionario() {
 
@@ -156,7 +197,10 @@ export function Questionario() {
 
           <Navbar />
 
-          {ehadmin ? <AcessarAdmin /> : (respondeu === false ? <LoggedInAcessar /> : <LoggedOutAcessar />)}
+      {ehadmin && <AcessarAdmin />}
+      {!logged && <LoggedOutAcessar />}
+      {logged && respondeu === false && <LoggedInAcessar />}
+      {logged && respondeu === true && <Respondido />}
 
 
       </>

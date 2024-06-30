@@ -79,7 +79,6 @@ class ChecarFlags(Resource):
 @auth_ns.route('/cadastro/<string:email>')
 class CadastroAlterar(Resource):
     @auth_ns.expect(cadastro_model)
-    @jwt_required()
     def put(self, email):
         data = request.get_json()
 

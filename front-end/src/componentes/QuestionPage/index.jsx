@@ -14,7 +14,7 @@ function QuestionPage({ question, answer, onAnswerChange }) {
       <Form>
       {['radio'].map((type) => (
         <div key={`default-${type}`} className="mb-3">
-          <Form.Check // prettier-ignore
+          <Form.Check 
             type={type}
             id={question.id}
             label={question.alt1}
@@ -22,7 +22,7 @@ function QuestionPage({ question, answer, onAnswerChange }) {
             name={question.id}
             onChange={handleChange}
           />
-          <Form.Check // prettier-ignore
+          <Form.Check 
             type={type}
             id={question.id}
             label={question.alt2}
@@ -30,7 +30,7 @@ function QuestionPage({ question, answer, onAnswerChange }) {
             name={question.id}
             onChange={handleChange}
           />
-          <Form.Check // prettier-ignore
+          <Form.Check 
             type={type}
             id={question.id}
             label={question.alt3}
@@ -38,7 +38,7 @@ function QuestionPage({ question, answer, onAnswerChange }) {
             name={question.id}
             onChange={handleChange}
           />
-          <Form.Check // prettier-ignore
+          <Form.Check 
             type={type}
             id={question.id}
             label={question.alt4}
@@ -46,7 +46,7 @@ function QuestionPage({ question, answer, onAnswerChange }) {
             name={question.id}
             onChange={handleChange}
           />
-          <Form.Check // prettier-ignore
+          <Form.Check 
             type={type}
             id={question.id}
             label={question.alt5}
