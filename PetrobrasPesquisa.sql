@@ -11,34 +11,37 @@ CREATE TABLE usuario (
 
 
 
-CREATE TABLE questionario (
-    id SERIAL PRIMARY key,
-    q1 INT,
-    q2 INT,
-    q3 INT,
-    q4 INT,
-    q5 INT,
-    q6 INT,
-    q7 INT,
-    q8 INT,
-    q9 INT,
-    q10 INT 
+create table questionario (
+    id SERIAL primary key,
+    q1 text,
+    q2 text,
+    q3 text,
+    q4 text,
+    q5 text,
+    q6 text,
+    q7 text,
+    q8 text,
+    q9 text,
+    q10 text 
 );
 
 --select * from questionario;
 
---SELECT q2 AS value, COUNT(*) AS frequency
---FROM Questionario
---GROUP BY q2
---ORDER BY frequency DESC;
+SELECT q2 AS value, COUNT(*) AS frequency
+FROM Questionario
+GROUP BY q2
+ORDER BY frequency DESC;
 
-INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES (1, 2, 3, 1, 4, 5, 1, 4, 1, 1);
-INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES (2, 3, 1, 5, 2, 4, 3, 1, 2, 3);
-INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES (3, 1, 4, 2, 3, 1, 2, 5, 4, 2);
-INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES (4, 5, 2, 3, 1, 2, 4, 3, 5, 4);
-INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES (5, 4, 5, 4, 2, 3, 5, 2, 3, 5);
-INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES (1, 3, 1, 5, 3, 4, 1, 5, 1, 2);
-INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES (2, 1, 2, 1, 4, 1, 3, 4, 2, 3);
-INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES (3, 2, 3, 2, 1, 2, 5, 3, 4, 4);
-INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES (4, 3, 4, 3, 2, 5, 4, 2, 5, 5);
-INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES (5, 5, 5, 4, 3, 1, 2, 1, 1, 1);
+
+
+INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES ('Muito','Não','Pouco','Neutro','Muito','Muito pouco','Não','Neutro','Muito','Neutro');
+INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES ('Muito', 'Não', 'Pouco', 'Neutro', 'Muito', 'Muito pouco', 'Não', 'Neutro', 'Muito', 'Neutro');
+INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES ('Pouco', 'Muito', 'Não', 'Muito pouco', 'Neutro', 'Muito', 'Neutro', 'Não', 'Pouco', 'Muito');
+INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES ('Neutro', 'Pouco', 'Muito', 'Não', 'Muito pouco', 'Pouco', 'Muito', 'Neutro', 'Não', 'Muito');
+INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES ('Não', 'Neutro', 'Muito pouco', 'Muito', 'Pouco', 'Neutro', 'Muito pouco', 'Muito', 'Não', 'Pouco');
+INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES ('Muito pouco', 'Não', 'Neutro', 'Pouco', 'Muito', 'Não', 'Pouco', 'Muito pouco', 'Neutro', 'Muito');
+INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES ('Muito', 'Muito pouco', 'Neutro', 'Muito', 'Não', 'Pouco', 'Neutro', 'Pouco', 'Muito', 'Não');
+INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES ('Pouco', 'Neutro', 'Muito', 'Pouco', 'Muito pouco', 'Neutro', 'Muito', 'Não', 'Pouco', 'Muito');
+INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES ('Não', 'Pouco', 'Muito', 'Muito pouco', 'Muito', 'Não', 'Neutro', 'Muito', 'Pouco', 'Neutro');
+INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES ('Neutro', 'Muito', 'Não', 'Pouco', 'Neutro', 'Muito pouco', 'Pouco', 'Muito', 'Não', 'Muito');
+INSERT INTO questionario(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES ('Muito', 'Não', 'Pouco', 'Neutro', 'Muito pouco', 'Muito', 'Não', 'Pouco', 'Neutro', 'Muito');
