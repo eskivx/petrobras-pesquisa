@@ -104,9 +104,9 @@ useEffect(
     []);
 
 return (
-    <div className="tudo div-master">
+    <div className="tudo div-acessar">
         <div className="div-container gradient-background div-master">
-            <div className="main-div justified-center my-5 round-corner">
+            <div className="main-div2 justified-center my-5 round-corner">
                 <div className="container" id="container-home">
 
                     <h1 className="my-4">Lista de respostas</h1>

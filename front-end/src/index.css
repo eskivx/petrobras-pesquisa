@@ -96,7 +96,11 @@ button:focus-visible {
 }
 
 .div-master {
-  height:100%;
+  height:110%;
+}
+
+.div-acessar {
+  height:350%
 }
 
 #h1-home{
@@ -186,6 +190,14 @@ body {
   border-bottom-right-radius: 70px; */
 }
 
+
+.main-div2 {
+  background-color: white;
+  width: 480px;
+  height: 2200px;
+  /* border-bottom-left-radius: 70px;
+  border-bottom-right-radius: 70px; */
+}
 
 
 
